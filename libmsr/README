@@ -64,6 +64,9 @@ the library defaults to the READ_ONLY mode.
 
 In the READ_WRITE mode, you need to export the MSR_PKG_POWER_LIMIT, MSR_PP0_POWER_LIMIT and the MSR_DRAM_POWER_LIMIT environment variables
 to use RAPL for clamping. More information on setting these can be found in the Intel Manual, Chapter 14. Note that the default for MSR_PKG_POWER_LIMIT is 0x6845000148398 and not 0x0. Setting this to 0x0 affects turbo boost.  
+
+On a successful run, the READ_ONLY and READ_WRITE modes should create an output file (which begins with the hostname for the system) for each node (the MSR_RANK_MOD determines which rank in the MPI program creates this file). This file will contain node level power data. In case of the DRY_RUN mode, an empty file is created. 
+
 ===========================================
 
 Error messages:
