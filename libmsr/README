@@ -41,7 +41,7 @@ To link to the library:
 
 (2) You can use dynamic liknking rpath with gcc/mpicc in your Makefile as follows: 
 
- mpicc -o <exec-name> <file-name.c> -Xlinker -rpath=<path-to-libmsr>/libmsr_blr/lib -L<path-to-libmsr>/libmsr_blr/lib -lrapl
+ mpicc -o <exec-name> <file-name.c> -Xlinker -rpath=<path-to-libmsr>/libmsr/lib -L<path-to-libmsr>/libmsr/lib -lrapl
 ===========================================
 
 Modes:
