@@ -40,8 +40,8 @@ get_command_line(int argc, char **argv )*/
  * PATKI: get_env_variables()
  * 
  * This module will serve as an entry point into the library functionality and will be
- * called by rapl_init. It determine whether you want to do a dry run, a read-only-run or allow
- * writing to msrs based on environment variables. This will call the inia_msr(), set_power_bounds() module
+ * called by rapl_init. It determines whether you want to do a dry run, a read-only-run or allow
+ * writing to msrs based on environment variables. This will call the init_msr(), set_power_bounds() modules
                    
  * only when writing to msrs is enabled. 
  * Also, note that finalize_msr() needs to be called only when init_msr() has been called. 
