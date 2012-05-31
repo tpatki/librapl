@@ -1,0 +1,1414 @@
+
+;; Function MPI_Init (MPI_Init)
+
+(note 1 0 5 NOTE_INSN_DELETED)
+
+;; Start of basic block ( 0) -> 2
+;; Pred edge  ENTRY (fallthru)
+(note 5 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(insn 2 5 3 2 rapl.c:55 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -24 [0xffffffffffffffe8])) [0 arg_0+0 S8 A64])
+        (reg:DI 5 di [ arg_0 ])) 89 {*movdi_1_rex64} (nil))
+
+(insn 3 2 4 2 rapl.c:55 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -32 [0xffffffffffffffe0])) [0 arg_1+0 S8 A64])
+        (reg:DI 4 si [ arg_1 ])) 89 {*movdi_1_rex64} (nil))
+
+(note 4 3 7 2 NOTE_INSN_FUNCTION_BEG)
+
+(insn 7 4 8 2 rapl.c:56 (set (mem/c/i:SI (plus:DI (reg/f:DI 20 frame)
+                (const_int -4 [0xfffffffffffffffc])) [0 _wrap_py_return_val+0 S4 A32])
+        (const_int 0 [0x0])) 47 {*movsi_1} (nil))
+
+(insn 8 7 9 2 rapl.c:57 (set (reg:SI 77 [ in_wrapper.0 ])
+        (mem/c/i:SI (symbol_ref:DI ("in_wrapper") [flags 0x2]  <var_decl 0x7fed12e05460 in_wrapper>) [0 in_wrapper+0 S4 A32])) 47 {*movsi_1} (nil))
+
+(insn 9 8 10 2 rapl.c:57 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg:SI 77 [ in_wrapper.0 ])
+            (const_int 0 [0x0]))) 3 {*cmpsi_ccno_1} (nil))
+
+(jump_insn 10 9 11 2 rapl.c:57 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 21)
+            (pc))) 617 {*jcc_1} (nil))
+;; End of basic block 2 -> ( 3 4)
+
+;; Succ edge  3 (fallthru)
+;; Succ edge  4
+
+;; Start of basic block ( 2) -> 3
+;; Pred edge  2 (fallthru)
+(note 11 10 12 3 [bb 3] NOTE_INSN_BASIC_BLOCK)
+
+(insn 12 11 13 3 rapl.c:57 (set (reg:DI 79)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -32 [0xffffffffffffffe0])) [0 arg_1+0 S8 A64])) 89 {*movdi_1_rex64} (nil))
+
+(insn 13 12 14 3 rapl.c:57 (set (reg:DI 80)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -24 [0xffffffffffffffe8])) [0 arg_0+0 S8 A64])) 89 {*movdi_1_rex64} (nil))
+
+(insn 14 13 15 3 rapl.c:57 (set (reg:DI 4 si)
+        (reg:DI 79)) 89 {*movdi_1_rex64} (nil))
+
+(insn 15 14 16 3 rapl.c:57 (set (reg:DI 5 di)
+        (reg:DI 80)) 89 {*movdi_1_rex64} (nil))
+
+(call_insn 16 15 17 3 rapl.c:57 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("PMPI_Init") [flags 0x41]  <function_decl 0x7fed12f1bd00 PMPI_Init>) [0 S1 A8])
+            (const_int 0 [0x0]))) 936 {*call_value_0_rex64} (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (expr_list:REG_DEP_TRUE (use (reg:DI 4 si))
+            (nil))))
+
+(insn 17 16 18 3 rapl.c:57 (set (reg:SI 75 [ D.6412 ])
+        (reg:SI 0 ax)) 47 {*movsi_1} (nil))
+
+(insn 18 17 208 3 rapl.c:57 (set (reg:SI 76 [ D.6411 ])
+        (reg:SI 75 [ D.6412 ])) 47 {*movsi_1} (nil))
+
+(jump_insn 208 18 209 3 rapl.c:57 (set (pc)
+        (label_ref 185)) -1 (nil))
+;; End of basic block 3 -> ( 28)
+
+;; Succ edge  28 [100.0%] 
+
+(barrier 209 208 21)
+
+;; Start of basic block ( 2) -> 4
+;; Pred edge  2
+(code_label 21 209 22 4 2 "" [1 uses])
+
+(note 22 21 23 4 [bb 4] NOTE_INSN_BASIC_BLOCK)
+
+(insn 23 22 24 4 rapl.c:58 (set (mem/c/i:SI (symbol_ref:DI ("in_wrapper") [flags 0x2]  <var_decl 0x7fed12e05460 in_wrapper>) [0 in_wrapper+0 S4 A32])
+        (const_int 1 [0x1])) 47 {*movsi_1} (nil))
+
+(insn 24 23 25 4 rapl.c:60 (set (reg:SI 74 [ fortran_init.1 ])
+        (mem/c/i:SI (symbol_ref:DI ("fortran_init") [flags 0x2]  <var_decl 0x7fed12c8ebe0 fortran_init>) [0 fortran_init+0 S4 A32])) 47 {*movsi_1} (nil))
+
+(insn 25 24 26 4 rapl.c:60 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg:SI 74 [ fortran_init.1 ])
+            (const_int 0 [0x0]))) 3 {*cmpsi_ccno_1} (nil))
+
+(jump_insn 26 25 27 4 rapl.c:60 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 121)
+            (pc))) 617 {*jcc_1} (nil))
+;; End of basic block 4 -> ( 5 22)
+
+;; Succ edge  5 (fallthru)
+;; Succ edge  22
+
+;; Start of basic block ( 4) -> 5
+;; Pred edge  4 (fallthru)
+(note 27 26 28 5 [bb 5] NOTE_INSN_BASIC_BLOCK)
+
+(insn 28 27 29 5 rapl.c:62 (set (reg:DI 82)
+        (mem/u/c:DI (const:DI (unspec:DI [
+                        (symbol_ref/i:DI ("PMPI_INIT") [flags 0x41]  <function_decl 0x7fed12c28100 PMPI_INIT>)
+                    ] 2)) [0 S8 A8])) 89 {*movdi_1_rex64} (nil))
+
+(insn 29 28 30 5 rapl.c:62 (set (reg:DI 81)
+        (reg:DI 82)) 89 {*movdi_1_rex64} (expr_list:REG_EQUAL (symbol_ref/i:DI ("PMPI_INIT") [flags 0x41]  <function_decl 0x7fed12c28100 PMPI_INIT>)
+        (nil)))
+
+(insn 30 29 31 5 rapl.c:62 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg:DI 81)
+            (const_int 0 [0x0]))) 0 {cmpdi_ccno_1_rex64} (nil))
+
+(jump_insn 31 30 32 5 rapl.c:62 (set (pc)
+        (if_then_else (ne (reg:CCZ 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 60)
+            (pc))) 617 {*jcc_1} (nil))
+;; End of basic block 5 -> ( 6 10)
+
+;; Succ edge  6 (fallthru)
+;; Succ edge  10
+
+;; Start of basic block ( 5) -> 6
+;; Pred edge  5 (fallthru)
+(note 32 31 33 6 [bb 6] NOTE_INSN_BASIC_BLOCK)
+
+(insn 33 32 34 6 rapl.c:62 (set (reg:DI 84)
+        (mem/u/c:DI (const:DI (unspec:DI [
+                        (symbol_ref/i:DI ("pmpi_init") [flags 0x41]  <function_decl 0x7fed12c28000 pmpi_init>)
+                    ] 2)) [0 S8 A8])) 89 {*movdi_1_rex64} (nil))
+
+(insn 34 33 35 6 rapl.c:62 (set (reg:DI 83)
+        (reg:DI 84)) 89 {*movdi_1_rex64} (expr_list:REG_EQUAL (symbol_ref/i:DI ("pmpi_init") [flags 0x41]  <function_decl 0x7fed12c28000 pmpi_init>)
+        (nil)))
+
+(insn 35 34 36 6 rapl.c:62 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg:DI 83)
+            (const_int 0 [0x0]))) 0 {cmpdi_ccno_1_rex64} (nil))
+
+(jump_insn 36 35 37 6 rapl.c:62 (set (pc)
+        (if_then_else (ne (reg:CCZ 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 60)
+            (pc))) 617 {*jcc_1} (nil))
+;; End of basic block 6 -> ( 7 10)
+
+;; Succ edge  7 (fallthru)
+;; Succ edge  10
+
+;; Start of basic block ( 6) -> 7
+;; Pred edge  6 (fallthru)
+(note 37 36 38 7 [bb 7] NOTE_INSN_BASIC_BLOCK)
+
+(insn 38 37 39 7 rapl.c:62 (set (reg:DI 86)
+        (mem/u/c:DI (const:DI (unspec:DI [
+                        (symbol_ref/i:DI ("pmpi_init_") [flags 0x41]  <function_decl 0x7fed12c28200 pmpi_init_>)
+                    ] 2)) [0 S8 A8])) 89 {*movdi_1_rex64} (nil))
+
+(insn 39 38 40 7 rapl.c:62 (set (reg:DI 85)
+        (reg:DI 86)) 89 {*movdi_1_rex64} (expr_list:REG_EQUAL (symbol_ref/i:DI ("pmpi_init_") [flags 0x41]  <function_decl 0x7fed12c28200 pmpi_init_>)
+        (nil)))
+
+(insn 40 39 41 7 rapl.c:62 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg:DI 85)
+            (const_int 0 [0x0]))) 0 {cmpdi_ccno_1_rex64} (nil))
+
+(jump_insn 41 40 42 7 rapl.c:62 (set (pc)
+        (if_then_else (ne (reg:CCZ 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 60)
+            (pc))) 617 {*jcc_1} (nil))
+;; End of basic block 7 -> ( 8 10)
+
+;; Succ edge  8 (fallthru)
+;; Succ edge  10
+
+;; Start of basic block ( 7) -> 8
+;; Pred edge  7 (fallthru)
+(note 42 41 43 8 [bb 8] NOTE_INSN_BASIC_BLOCK)
+
+(insn 43 42 44 8 rapl.c:62 (set (reg:DI 88)
+        (mem/u/c:DI (const:DI (unspec:DI [
+                        (symbol_ref/i:DI ("pmpi_init__") [flags 0x41]  <function_decl 0x7fed12c28300 pmpi_init__>)
+                    ] 2)) [0 S8 A8])) 89 {*movdi_1_rex64} (nil))
+
+(insn 44 43 45 8 rapl.c:62 (set (reg:DI 87)
+        (reg:DI 88)) 89 {*movdi_1_rex64} (expr_list:REG_EQUAL (symbol_ref/i:DI ("pmpi_init__") [flags 0x41]  <function_decl 0x7fed12c28300 pmpi_init__>)
+        (nil)))
+
+(insn 45 44 46 8 rapl.c:62 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg:DI 87)
+            (const_int 0 [0x0]))) 0 {cmpdi_ccno_1_rex64} (nil))
+
+(jump_insn 46 45 47 8 rapl.c:62 (set (pc)
+        (if_then_else (ne (reg:CCZ 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 60)
+            (pc))) 617 {*jcc_1} (nil))
+;; End of basic block 8 -> ( 9 10)
+
+;; Succ edge  9 (fallthru)
+;; Succ edge  10
+
+;; Start of basic block ( 8) -> 9
+;; Pred edge  8 (fallthru)
+(note 47 46 48 9 [bb 9] NOTE_INSN_BASIC_BLOCK)
+
+(insn 48 47 49 9 rapl.c:63 (set (reg/f:DI 89)
+        (mem/u/c:DI (const:DI (unspec:DI [
+                        (symbol_ref:DI ("stderr") [flags 0x40]  <var_decl 0x7fed12d9faa0 stderr>)
+                    ] 2)) [0 S8 A8])) 89 {*movdi_1_rex64} (nil))
+
+(insn 49 48 50 9 rapl.c:63 (set (reg/f:DI 73 [ stderr.2 ])
+        (mem/f/c/i:DI (reg/f:DI 89) [0 stderr+0 S8 A64])) 89 {*movdi_1_rex64} (nil))
+
+(insn 50 49 51 9 rapl.c:63 (set (reg/f:DI 72 [ stderr.3 ])
+        (reg/f:DI 73 [ stderr.2 ])) 89 {*movdi_1_rex64} (nil))
+
+(insn 51 50 52 9 rapl.c:63 (set (reg/f:DI 71 [ D.6426 ])
+        (symbol_ref/f:DI ("*.LC0") [flags 0x2]  <string_cst 0x7fed12caed00>)) 89 {*movdi_1_rex64} (nil))
+
+(insn 52 51 53 9 rapl.c:63 (set (reg:DI 2 cx)
+        (reg/f:DI 72 [ stderr.3 ])) 89 {*movdi_1_rex64} (nil))
+
+(insn 53 52 54 9 rapl.c:63 (set (reg:DI 1 dx)
+        (const_int 87 [0x57])) 89 {*movdi_1_rex64} (nil))
+
+(insn 54 53 55 9 rapl.c:63 (set (reg:DI 4 si)
+        (const_int 1 [0x1])) 89 {*movdi_1_rex64} (nil))
+
+(insn 55 54 56 9 rapl.c:63 (set (reg:DI 5 di)
+        (reg/f:DI 71 [ D.6426 ])) 89 {*movdi_1_rex64} (nil))
+
+(call_insn 56 55 57 9 rapl.c:63 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("fwrite") [flags 0x41]  <function_decl 0x7fed12fc2b00 __builtin_fwrite>) [0 S1 A8])
+            (const_int 0 [0x0]))) 936 {*call_value_0_rex64} (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (expr_list:REG_DEP_TRUE (use (reg:DI 4 si))
+            (expr_list:REG_DEP_TRUE (use (reg:DI 1 dx))
+                (expr_list:REG_DEP_TRUE (use (reg:DI 2 cx))
+                    (nil))))))
+
+(insn 57 56 58 9 rapl.c:64 (set (reg:SI 5 di)
+        (const_int 1 [0x1])) 47 {*movsi_1} (nil))
+
+(call_insn 58 57 59 9 rapl.c:64 (call (mem:QI (symbol_ref:DI ("exit") [flags 0x41]  <function_decl 0x7fed12fd7c00 exit>) [0 S1 A8])
+        (const_int 0 [0x0])) 646 {*call_0} (expr_list:REG_NORETURN (const_int 0 [0x0])
+        (expr_list:REG_EH_REGION (const_int 0 [0x0])
+            (nil)))
+    (expr_list:REG_DEP_TRUE (use (reg:SI 5 di))
+        (nil)))
+;; End of basic block 9 -> ()
+
+
+(barrier 59 58 60)
+
+;; Start of basic block ( 5 6 7 8) -> 10
+;; Pred edge  5
+;; Pred edge  6
+;; Pred edge  7
+;; Pred edge  8
+(code_label 60 59 61 10 5 "" [4 uses])
+
+(note 61 60 62 10 [bb 10] NOTE_INSN_BASIC_BLOCK)
+
+(insn 62 61 63 10 rapl.c:65 (set (reg:SI 70 [ fortran_init.4 ])
+        (mem/c/i:SI (symbol_ref:DI ("fortran_init") [flags 0x2]  <var_decl 0x7fed12c8ebe0 fortran_init>) [0 fortran_init+0 S4 A32])) 47 {*movsi_1} (nil))
+
+(insn 63 62 64 10 rapl.c:65 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg:SI 70 [ fortran_init.4 ])
+            (const_int 2 [0x2]))) 5 {*cmpsi_1_insn} (nil))
+
+(jump_insn 64 63 199 10 rapl.c:65 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 85)
+            (pc))) 617 {*jcc_1} (nil))
+;; End of basic block 10 -> ( 18 11)
+
+;; Succ edge  18
+;; Succ edge  11 (fallthru)
+
+;; Start of basic block ( 10) -> 11
+;; Pred edge  10 (fallthru)
+(note 199 64 65 11 [bb 11] NOTE_INSN_BASIC_BLOCK)
+
+(insn 65 199 66 11 rapl.c:65 (set (reg:CCGC 17 flags)
+        (compare:CCGC (reg:SI 70 [ fortran_init.4 ])
+            (const_int 2 [0x2]))) 5 {*cmpsi_1_insn} (nil))
+
+(jump_insn 66 65 200 11 rapl.c:65 (set (pc)
+        (if_then_else (gt (reg:CCGC 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 71)
+            (pc))) 617 {*jcc_1} (nil))
+;; End of basic block 11 -> ( 14 12)
+
+;; Succ edge  14
+;; Succ edge  12 (fallthru)
+
+;; Start of basic block ( 11) -> 12
+;; Pred edge  11 (fallthru)
+(note 200 66 67 12 [bb 12] NOTE_INSN_BASIC_BLOCK)
+
+(insn 67 200 68 12 rapl.c:65 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg:SI 70 [ fortran_init.4 ])
+            (const_int 1 [0x1]))) 5 {*cmpsi_1_insn} (nil))
+
+(jump_insn 68 67 210 12 rapl.c:65 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 78)
+            (pc))) 617 {*jcc_1} (nil))
+;; End of basic block 12 -> ( 17 13)
+
+;; Succ edge  17
+;; Succ edge  13 (fallthru)
+
+;; Start of basic block ( 12) -> 13
+;; Pred edge  12 (fallthru)
+(note 210 68 211 13 [bb 13] NOTE_INSN_BASIC_BLOCK)
+
+(jump_insn 211 210 212 13 rapl.c:65 (set (pc)
+        (label_ref 106)) -1 (nil))
+;; End of basic block 13 -> ( 21)
+
+;; Succ edge  21 [100.0%] 
+
+(barrier 212 211 71)
+
+;; Start of basic block ( 11) -> 14
+;; Pred edge  11
+(code_label 71 212 202 14 11 "" [1 uses])
+
+(note 202 71 72 14 [bb 14] NOTE_INSN_BASIC_BLOCK)
+
+(insn 72 202 73 14 rapl.c:65 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg:SI 70 [ fortran_init.4 ])
+            (const_int 3 [0x3]))) 5 {*cmpsi_1_insn} (nil))
+
+(jump_insn 73 72 203 14 rapl.c:65 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 92)
+            (pc))) 617 {*jcc_1} (nil))
+;; End of basic block 14 -> ( 19 15)
+
+;; Succ edge  19
+;; Succ edge  15 (fallthru)
+
+;; Start of basic block ( 14) -> 15
+;; Pred edge  14 (fallthru)
+(note 203 73 74 15 [bb 15] NOTE_INSN_BASIC_BLOCK)
+
+(insn 74 203 75 15 rapl.c:65 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg:SI 70 [ fortran_init.4 ])
+            (const_int 4 [0x4]))) 5 {*cmpsi_1_insn} (nil))
+
+(jump_insn 75 74 213 15 rapl.c:65 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 99)
+            (pc))) 617 {*jcc_1} (nil))
+;; End of basic block 15 -> ( 20 16)
+
+;; Succ edge  20
+;; Succ edge  16 (fallthru)
+
+;; Start of basic block ( 15) -> 16
+;; Pred edge  15 (fallthru)
+(note 213 75 214 16 [bb 16] NOTE_INSN_BASIC_BLOCK)
+
+(jump_insn 214 213 215 16 rapl.c:65 (set (pc)
+        (label_ref 106)) -1 (nil))
+;; End of basic block 16 -> ( 21)
+
+;; Succ edge  21 [100.0%] 
+
+(barrier 215 214 78)
+
+;; Start of basic block ( 12) -> 17
+;; Pred edge  12
+(code_label 78 215 79 17 7 "" [1 uses])
+
+(note 79 78 80 17 [bb 17] NOTE_INSN_BASIC_BLOCK)
+
+(insn 80 79 81 17 rapl.c:66 (parallel [
+            (set (reg:DI 90)
+                (plus:DI (reg/f:DI 20 frame)
+                    (const_int -4 [0xfffffffffffffffc])))
+            (clobber (reg:CC 17 flags))
+        ]) 281 {*adddi_1_rex64} (nil))
+
+(insn 81 80 82 17 rapl.c:66 (set (reg:DI 5 di)
+        (reg:DI 90)) 89 {*movdi_1_rex64} (nil))
+
+(call_insn 82 81 216 17 rapl.c:66 (call (mem:QI (symbol_ref/i:DI ("PMPI_INIT") [flags 0x41]  <function_decl 0x7fed12c28100 PMPI_INIT>) [0 S1 A8])
+        (const_int 0 [0x0])) 646 {*call_0} (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (nil)))
+
+(jump_insn 216 82 217 17 rapl.c:66 (set (pc)
+        (label_ref 130)) -1 (nil))
+;; End of basic block 17 -> ( 23)
+
+;; Succ edge  23 [100.0%] 
+
+(barrier 217 216 85)
+
+;; Start of basic block ( 10) -> 18
+;; Pred edge  10
+(code_label 85 217 86 18 8 "" [1 uses])
+
+(note 86 85 87 18 [bb 18] NOTE_INSN_BASIC_BLOCK)
+
+(insn 87 86 88 18 rapl.c:67 (parallel [
+            (set (reg:DI 91)
+                (plus:DI (reg/f:DI 20 frame)
+                    (const_int -4 [0xfffffffffffffffc])))
+            (clobber (reg:CC 17 flags))
+        ]) 281 {*adddi_1_rex64} (nil))
+
+(insn 88 87 89 18 rapl.c:67 (set (reg:DI 5 di)
+        (reg:DI 91)) 89 {*movdi_1_rex64} (nil))
+
+(call_insn 89 88 218 18 rapl.c:67 (call (mem:QI (symbol_ref/i:DI ("pmpi_init") [flags 0x41]  <function_decl 0x7fed12c28000 pmpi_init>) [0 S1 A8])
+        (const_int 0 [0x0])) 646 {*call_0} (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (nil)))
+
+(jump_insn 218 89 219 18 rapl.c:67 (set (pc)
+        (label_ref 130)) -1 (nil))
+;; End of basic block 18 -> ( 23)
+
+;; Succ edge  23 [100.0%] 
+
+(barrier 219 218 92)
+
+;; Start of basic block ( 14) -> 19
+;; Pred edge  14
+(code_label 92 219 93 19 9 "" [1 uses])
+
+(note 93 92 94 19 [bb 19] NOTE_INSN_BASIC_BLOCK)
+
+(insn 94 93 95 19 rapl.c:68 (parallel [
+            (set (reg:DI 92)
+                (plus:DI (reg/f:DI 20 frame)
+                    (const_int -4 [0xfffffffffffffffc])))
+            (clobber (reg:CC 17 flags))
+        ]) 281 {*adddi_1_rex64} (nil))
+
+(insn 95 94 96 19 rapl.c:68 (set (reg:DI 5 di)
+        (reg:DI 92)) 89 {*movdi_1_rex64} (nil))
+
+(call_insn 96 95 220 19 rapl.c:68 (call (mem:QI (symbol_ref/i:DI ("pmpi_init_") [flags 0x41]  <function_decl 0x7fed12c28200 pmpi_init_>) [0 S1 A8])
+        (const_int 0 [0x0])) 646 {*call_0} (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (nil)))
+
+(jump_insn 220 96 221 19 rapl.c:68 (set (pc)
+        (label_ref 130)) -1 (nil))
+;; End of basic block 19 -> ( 23)
+
+;; Succ edge  23 [100.0%] 
+
+(barrier 221 220 99)
+
+;; Start of basic block ( 15) -> 20
+;; Pred edge  15
+(code_label 99 221 100 20 10 "" [1 uses])
+
+(note 100 99 101 20 [bb 20] NOTE_INSN_BASIC_BLOCK)
+
+(insn 101 100 102 20 rapl.c:69 (parallel [
+            (set (reg:DI 93)
+                (plus:DI (reg/f:DI 20 frame)
+                    (const_int -4 [0xfffffffffffffffc])))
+            (clobber (reg:CC 17 flags))
+        ]) 281 {*adddi_1_rex64} (nil))
+
+(insn 102 101 103 20 rapl.c:69 (set (reg:DI 5 di)
+        (reg:DI 93)) 89 {*movdi_1_rex64} (nil))
+
+(call_insn 103 102 207 20 rapl.c:69 (call (mem:QI (symbol_ref/i:DI ("pmpi_init__") [flags 0x41]  <function_decl 0x7fed12c28300 pmpi_init__>) [0 S1 A8])
+        (const_int 0 [0x0])) 646 {*call_0} (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (nil)))
+
+(insn 207 103 222 20 rapl.c:69 (const_int 0 [0x0]) -1 (nil))
+
+(jump_insn 222 207 223 20 (set (pc)
+        (label_ref 130)) -1 (nil))
+;; End of basic block 20 -> ( 23)
+
+;; Succ edge  23 [100.0%] 
+
+(barrier 223 222 106)
+
+;; Start of basic block ( 13 16) -> 21
+;; Pred edge  13 [100.0%] 
+;; Pred edge  16 [100.0%] 
+(code_label 106 223 107 21 6 "" [2 uses])
+
+(note 107 106 108 21 [bb 21] NOTE_INSN_BASIC_BLOCK)
+
+(insn 108 107 109 21 rapl.c:71 (set (reg/f:DI 94)
+        (mem/u/c:DI (const:DI (unspec:DI [
+                        (symbol_ref:DI ("stderr") [flags 0x40]  <var_decl 0x7fed12d9faa0 stderr>)
+                    ] 2)) [0 S8 A8])) 89 {*movdi_1_rex64} (nil))
+
+(insn 109 108 110 21 rapl.c:71 (set (reg/f:DI 69 [ stderr.5 ])
+        (mem/f/c/i:DI (reg/f:DI 94) [0 stderr+0 S8 A64])) 89 {*movdi_1_rex64} (nil))
+
+(insn 110 109 111 21 rapl.c:71 (set (reg/f:DI 68 [ stderr.6 ])
+        (reg/f:DI 69 [ stderr.5 ])) 89 {*movdi_1_rex64} (nil))
+
+(insn 111 110 112 21 rapl.c:71 (set (reg/f:DI 67 [ D.6430 ])
+        (symbol_ref/f:DI ("*.LC1") [flags 0x2]  <string_cst 0x7fed12b4ba00>)) 89 {*movdi_1_rex64} (nil))
+
+(insn 112 111 113 21 rapl.c:71 (set (reg:DI 2 cx)
+        (reg/f:DI 68 [ stderr.6 ])) 89 {*movdi_1_rex64} (nil))
+
+(insn 113 112 114 21 rapl.c:71 (set (reg:DI 1 dx)
+        (const_int 37 [0x25])) 89 {*movdi_1_rex64} (nil))
+
+(insn 114 113 115 21 rapl.c:71 (set (reg:DI 4 si)
+        (const_int 1 [0x1])) 89 {*movdi_1_rex64} (nil))
+
+(insn 115 114 116 21 rapl.c:71 (set (reg:DI 5 di)
+        (reg/f:DI 67 [ D.6430 ])) 89 {*movdi_1_rex64} (nil))
+
+(call_insn 116 115 224 21 rapl.c:71 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("fwrite") [flags 0x41]  <function_decl 0x7fed12fc2b00 __builtin_fwrite>) [0 S1 A8])
+            (const_int 0 [0x0]))) 936 {*call_value_0_rex64} (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (expr_list:REG_DEP_TRUE (use (reg:DI 4 si))
+            (expr_list:REG_DEP_TRUE (use (reg:DI 1 dx))
+                (expr_list:REG_DEP_TRUE (use (reg:DI 2 cx))
+                    (nil))))))
+
+(jump_insn 224 116 225 21 rapl.c:71 (set (pc)
+        (label_ref 130)) -1 (nil))
+;; End of basic block 21 -> ( 23)
+
+;; Succ edge  23
+
+(barrier 225 224 121)
+
+;; Start of basic block ( 4) -> 22
+;; Pred edge  4
+(code_label 121 225 122 22 4 "" [1 uses])
+
+(note 122 121 123 22 [bb 22] NOTE_INSN_BASIC_BLOCK)
+
+(insn 123 122 124 22 rapl.c:78 (set (reg:DI 95)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -32 [0xffffffffffffffe0])) [0 arg_1+0 S8 A64])) 89 {*movdi_1_rex64} (nil))
+
+(insn 124 123 125 22 rapl.c:78 (set (reg:DI 96)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -24 [0xffffffffffffffe8])) [0 arg_0+0 S8 A64])) 89 {*movdi_1_rex64} (nil))
+
+(insn 125 124 126 22 rapl.c:78 (set (reg:DI 4 si)
+        (reg:DI 95)) 89 {*movdi_1_rex64} (nil))
+
+(insn 126 125 127 22 rapl.c:78 (set (reg:DI 5 di)
+        (reg:DI 96)) 89 {*movdi_1_rex64} (nil))
+
+(call_insn 127 126 128 22 rapl.c:78 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("PMPI_Init") [flags 0x41]  <function_decl 0x7fed12f1bd00 PMPI_Init>) [0 S1 A8])
+            (const_int 0 [0x0]))) 936 {*call_value_0_rex64} (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (expr_list:REG_DEP_TRUE (use (reg:DI 4 si))
+            (nil))))
+
+(insn 128 127 129 22 rapl.c:78 (set (reg:SI 66 [ _wrap_py_return_val.7 ])
+        (reg:SI 0 ax)) 47 {*movsi_1} (nil))
+
+(insn 129 128 130 22 rapl.c:78 (set (mem/c/i:SI (plus:DI (reg/f:DI 20 frame)
+                (const_int -4 [0xfffffffffffffffc])) [0 _wrap_py_return_val+0 S4 A32])
+        (reg:SI 66 [ _wrap_py_return_val.7 ])) 47 {*movsi_1} (nil))
+;; End of basic block 22 -> ( 23)
+
+;; Succ edge  23 (fallthru)
+
+;; Start of basic block ( 19 22 20 18 17 21) -> 23
+;; Pred edge  19 [100.0%] 
+;; Pred edge  22 (fallthru)
+;; Pred edge  20 [100.0%] 
+;; Pred edge  18 [100.0%] 
+;; Pred edge  17 [100.0%] 
+;; Pred edge  21
+(code_label 130 129 131 23 13 "" [5 uses])
+
+(note 131 130 132 23 [bb 23] NOTE_INSN_BASIC_BLOCK)
+
+(insn 132 131 133 23 rapl.c:81 (set (mem/c/i:SI (symbol_ref:DI ("rank") [flags 0x2]  <var_decl 0x7fed12c8e6e0 rank>) [0 rank+0 S4 A32])
+        (const_int -1 [0xffffffffffffffff])) 47 {*movsi_1} (nil))
+
+(insn 133 132 134 23 rapl.c:82 (set (reg:DI 4 si)
+        (symbol_ref:DI ("rank") [flags 0x2]  <var_decl 0x7fed12c8e6e0 rank>)) 89 {*movdi_1_rex64} (nil))
+
+(insn 134 133 135 23 rapl.c:82 (set (reg:SI 5 di)
+        (const_int 1140850688 [0x44000000])) 47 {*movsi_1} (nil))
+
+(call_insn 135 134 136 23 rapl.c:82 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("PMPI_Comm_rank") [flags 0x41]  <function_decl 0x7fed12f0f500 PMPI_Comm_rank>) [0 S1 A8])
+            (const_int 0 [0x0]))) 936 {*call_value_0_rex64} (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 5 di))
+        (expr_list:REG_DEP_TRUE (use (reg:DI 4 si))
+            (nil))))
+
+(insn 136 135 137 23 rapl.c:83 (set (reg:DI 4 si)
+        (symbol_ref:DI ("msr_rank_mod") [flags 0x2]  <var_decl 0x7fed12c8eb40 msr_rank_mod>)) 89 {*movdi_1_rex64} (nil))
+
+(insn 137 136 138 23 rapl.c:83 (set (reg:DI 5 di)
+        (symbol_ref/f:DI ("*.LC2") [flags 0x2]  <string_cst 0x7fed12b48500>)) 89 {*movdi_1_rex64} (nil))
+
+(call_insn 138 137 139 23 rapl.c:83 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("get_env_int") [flags 0x41]  <function_decl 0x7fed12c9a200 get_env_int>) [0 S1 A8])
+            (const_int 0 [0x0]))) 936 {*call_value_0_rex64} (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (expr_list:REG_DEP_TRUE (use (reg:DI 4 si))
+            (nil))))
+
+(insn 139 138 140 23 rapl.c:83 (set (reg:SI 65 [ retVal.8 ])
+        (reg:SI 0 ax)) 47 {*movsi_1} (nil))
+
+(insn 140 139 141 23 rapl.c:83 (set (reg/f:DI 97)
+        (mem/u/c:DI (const:DI (unspec:DI [
+                        (symbol_ref:DI ("retVal")  <var_decl 0x7fed12c8eaa0 retVal>)
+                    ] 2)) [0 S8 A8])) 89 {*movdi_1_rex64} (nil))
+
+(insn 141 140 142 23 rapl.c:83 (set (mem/c/i:SI (reg/f:DI 97) [0 retVal+0 S4 A32])
+        (reg:SI 65 [ retVal.8 ])) 47 {*movsi_1} (nil))
+
+(insn 142 141 143 23 rapl.c:85 (set (reg/f:DI 98)
+        (mem/u/c:DI (const:DI (unspec:DI [
+                        (symbol_ref:DI ("retVal")  <var_decl 0x7fed12c8eaa0 retVal>)
+                    ] 2)) [0 S8 A8])) 89 {*movdi_1_rex64} (nil))
+
+(insn 143 142 144 23 rapl.c:85 (set (reg:SI 64 [ retVal.9 ])
+        (mem/c/i:SI (reg/f:DI 98) [0 retVal+0 S4 A32])) 47 {*movsi_1} (nil))
+
+(insn 144 143 145 23 rapl.c:85 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg:SI 64 [ retVal.9 ])
+            (const_int -1 [0xffffffffffffffff]))) 5 {*cmpsi_1_insn} (nil))
+
+(jump_insn 145 144 146 23 rapl.c:85 (set (pc)
+        (if_then_else (ne (reg:CCZ 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 152)
+            (pc))) 617 {*jcc_1} (nil))
+;; End of basic block 23 -> ( 24 25)
+
+;; Succ edge  24 (fallthru)
+;; Succ edge  25
+
+;; Start of basic block ( 23) -> 24
+;; Pred edge  23 (fallthru)
+(note 146 145 147 24 [bb 24] NOTE_INSN_BASIC_BLOCK)
+
+(insn 147 146 148 24 rapl.c:86 (set (reg:DI 5 di)
+        (symbol_ref/f:DI ("*.LC3") [flags 0x2]  <string_cst 0x7fed12caee00>)) 89 {*movdi_1_rex64} (nil))
+
+(call_insn 148 147 149 24 rapl.c:86 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("puts") [flags 0x41]  <function_decl 0x7fed12fc5700 __builtin_puts>) [0 S1 A8])
+            (const_int 0 [0x0]))) 936 {*call_value_0_rex64} (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (nil)))
+
+(insn 149 148 150 24 rapl.c:87 (set (reg:SI 5 di)
+        (const_int 1 [0x1])) 47 {*movsi_1} (nil))
+
+(call_insn 150 149 151 24 rapl.c:87 (call (mem:QI (symbol_ref:DI ("exit") [flags 0x41]  <function_decl 0x7fed12fd7c00 exit>) [0 S1 A8])
+        (const_int 0 [0x0])) 646 {*call_0} (expr_list:REG_NORETURN (const_int 0 [0x0])
+        (expr_list:REG_EH_REGION (const_int 0 [0x0])
+            (nil)))
+    (expr_list:REG_DEP_TRUE (use (reg:SI 5 di))
+        (nil)))
+;; End of basic block 24 -> ()
+
+
+(barrier 151 150 152)
+
+;; Start of basic block ( 23) -> 25
+;; Pred edge  23
+(code_label 152 151 153 25 14 "" [1 uses])
+
+(note 153 152 154 25 [bb 25] NOTE_INSN_BASIC_BLOCK)
+
+(insn 154 153 155 25 rapl.c:90 (set (reg:SI 63 [ rank.10 ])
+        (mem/c/i:SI (symbol_ref:DI ("rank") [flags 0x2]  <var_decl 0x7fed12c8e6e0 rank>) [0 rank+0 S4 A32])) 47 {*movsi_1} (nil))
+
+(insn 155 154 156 25 rapl.c:90 (set (reg:SI 62 [ msr_rank_mod.11 ])
+        (mem/c/i:SI (symbol_ref:DI ("msr_rank_mod") [flags 0x2]  <var_decl 0x7fed12c8eb40 msr_rank_mod>) [0 msr_rank_mod+0 S4 A32])) 47 {*movsi_1} (nil))
+
+(insn 156 155 157 25 rapl.c:90 (parallel [
+            (set (reg:SI 100)
+                (div:SI (reg:SI 63 [ rank.10 ])
+                    (reg:SI 62 [ msr_rank_mod.11 ])))
+            (set (reg:SI 99)
+                (mod:SI (reg:SI 63 [ rank.10 ])
+                    (reg:SI 62 [ msr_rank_mod.11 ])))
+            (clobber (reg:CC 17 flags))
+        ]) 355 {*divmodsi4_nocltd} (nil))
+
+(insn 157 156 158 25 rapl.c:90 (set (reg:SI 61 [ D.6439 ])
+        (reg:SI 99)) 47 {*movsi_1} (nil))
+
+(insn 158 157 159 25 rapl.c:90 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg:SI 61 [ D.6439 ])
+            (const_int 0 [0x0]))) 3 {*cmpsi_ccno_1} (nil))
+
+(jump_insn 159 158 160 25 rapl.c:90 (set (pc)
+        (if_then_else (ne (reg:CCZ 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 181)
+            (pc))) 617 {*jcc_1} (nil))
+;; End of basic block 25 -> ( 26 27)
+
+;; Succ edge  26 (fallthru)
+;; Succ edge  27
+
+;; Start of basic block ( 25) -> 26
+;; Pred edge  25 (fallthru)
+(note 160 159 161 26 [bb 26] NOTE_INSN_BASIC_BLOCK)
+
+(insn 161 160 162 26 rapl.c:91 (set (reg:DI 4 si)
+        (const_int 1024 [0x400])) 89 {*movdi_1_rex64} (nil))
+
+(insn 162 161 163 26 rapl.c:91 (set (reg:DI 5 di)
+        (symbol_ref:DI ("hostname") [flags 0x2]  <var_decl 0x7fed12c8e780 hostname>)) 89 {*movdi_1_rex64} (nil))
+
+(call_insn 163 162 164 26 rapl.c:91 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("gethostname") [flags 0x41]  <function_decl 0x7fed12c71a00 gethostname>) [0 S1 A8])
+            (const_int 0 [0x0]))) 936 {*call_value_0_rex64} (expr_list:REG_EH_REGION (const_int 0 [0x0])
+        (nil))
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (expr_list:REG_DEP_TRUE (use (reg:DI 4 si))
+            (nil))))
+
+(insn 164 163 165 26 rapl.c:93 (set (reg:SI 60 [ rank.12 ])
+        (mem/c/i:SI (symbol_ref:DI ("rank") [flags 0x2]  <var_decl 0x7fed12c8e6e0 rank>) [0 rank+0 S4 A32])) 47 {*movsi_1} (nil))
+
+(insn 165 164 166 26 rapl.c:93 (set (reg/f:DI 59 [ D.6443 ])
+        (symbol_ref/f:DI ("*.LC4") [flags 0x2]  <string_cst 0x7fed12b4d240>)) 89 {*movdi_1_rex64} (nil))
+
+(insn 166 165 167 26 rapl.c:93 (set (reg:SI 2 cx)
+        (reg:SI 60 [ rank.12 ])) 47 {*movsi_1} (nil))
+
+(insn 167 166 168 26 rapl.c:93 (set (reg:DI 1 dx)
+        (symbol_ref:DI ("hostname") [flags 0x2]  <var_decl 0x7fed12c8e780 hostname>)) 89 {*movdi_1_rex64} (nil))
+
+(insn 168 167 169 26 rapl.c:93 (set (reg:DI 4 si)
+        (reg/f:DI 59 [ D.6443 ])) 89 {*movdi_1_rex64} (nil))
+
+(insn 169 168 170 26 rapl.c:93 (set (reg:DI 101)
+        (mem/u/c:DI (const:DI (unspec:DI [
+                        (symbol_ref:DI ("filetag")  <var_decl 0x7fed12c8ea00 filetag>)
+                    ] 2)) [0 S8 A8])) 89 {*movdi_1_rex64} (nil))
+
+(insn 170 169 171 26 rapl.c:93 (set (reg:DI 5 di)
+        (reg:DI 101)) 89 {*movdi_1_rex64} (expr_list:REG_EQUAL (symbol_ref:DI ("filetag")  <var_decl 0x7fed12c8ea00 filetag>)
+        (nil)))
+
+(insn 171 170 172 26 rapl.c:93 (set (reg:QI 0 ax)
+        (const_int 0 [0x0])) 62 {*movqi_1} (nil))
+
+(call_insn 172 171 173 26 rapl.c:93 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("sprintf") [flags 0x41]  <function_decl 0x7fed12fc7000 sprintf>) [0 S1 A8])
+            (const_int 0 [0x0]))) 936 {*call_value_0_rex64} (expr_list:REG_EH_REGION (const_int 0 [0x0])
+        (nil))
+    (expr_list:REG_DEP_TRUE (use (reg:QI 0 ax))
+        (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+            (expr_list:REG_DEP_TRUE (use (reg:DI 4 si))
+                (expr_list:REG_DEP_TRUE (use (reg:DI 1 dx))
+                    (expr_list:REG_DEP_TRUE (use (reg:SI 2 cx))
+                        (nil)))))))
+
+(insn 173 172 174 26 rapl.c:95 (set (reg:QI 0 ax)
+        (const_int 0 [0x0])) 62 {*movqi_1} (nil))
+
+(call_insn 174 173 175 26 rapl.c:95 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("register_sig") [flags 0x41]  <function_decl 0x7fed12c9a500 register_sig>) [0 S1 A8])
+            (const_int 0 [0x0]))) 936 {*call_value_0_rex64} (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:QI 0 ax))
+        (nil)))
+
+(insn 175 174 176 26 rapl.c:99 (set (reg:DI 102)
+        (mem/u/c:DI (const:DI (unspec:DI [
+                        (symbol_ref:DI ("filetag")  <var_decl 0x7fed12c8ea00 filetag>)
+                    ] 2)) [0 S8 A8])) 89 {*movdi_1_rex64} (nil))
+
+(insn 176 175 177 26 rapl.c:99 (set (reg:DI 5 di)
+        (reg:DI 102)) 89 {*movdi_1_rex64} (expr_list:REG_EQUAL (symbol_ref:DI ("filetag")  <var_decl 0x7fed12c8ea00 filetag>)
+        (nil)))
+
+(call_insn 177 176 178 26 rapl.c:99 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("rapl_init") [flags 0x41]  <function_decl 0x7fed12c88300 rapl_init>) [0 S1 A8])
+            (const_int 0 [0x0]))) 936 {*call_value_0_rex64} (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (nil)))
+
+(insn 178 177 179 26 rapl.c:99 (set (reg/f:DI 58 [ s.13 ])
+        (reg:DI 0 ax)) 89 {*movdi_1_rex64} (nil))
+
+(insn 179 178 180 26 rapl.c:99 (set (reg/f:DI 103)
+        (mem/u/c:DI (const:DI (unspec:DI [
+                        (symbol_ref:DI ("s")  <var_decl 0x7fed12c8e960 s>)
+                    ] 2)) [0 S8 A8])) 89 {*movdi_1_rex64} (nil))
+
+(insn 180 179 181 26 rapl.c:99 (set (mem/f/c/i:DI (reg/f:DI 103) [0 s+0 S8 A64])
+        (reg/f:DI 58 [ s.13 ])) 89 {*movdi_1_rex64} (nil))
+;; End of basic block 26 -> ( 27)
+
+;; Succ edge  27 (fallthru)
+
+;; Start of basic block ( 25 26) -> 27
+;; Pred edge  25
+;; Pred edge  26 (fallthru)
+(code_label 181 180 182 27 15 "" [1 uses])
+
+(note 182 181 183 27 [bb 27] NOTE_INSN_BASIC_BLOCK)
+
+(insn 183 182 184 27 rapl.c:101 (set (mem/c/i:SI (symbol_ref:DI ("in_wrapper") [flags 0x2]  <var_decl 0x7fed12e05460 in_wrapper>) [0 in_wrapper+0 S4 A32])
+        (const_int 0 [0x0])) 47 {*movsi_1} (nil))
+
+(insn 184 183 185 27 rapl.c:102 (set (reg:SI 76 [ D.6411 ])
+        (mem/c/i:SI (plus:DI (reg/f:DI 20 frame)
+                (const_int -4 [0xfffffffffffffffc])) [0 _wrap_py_return_val+0 S4 A32])) 47 {*movsi_1} (nil))
+;; End of basic block 27 -> ( 28)
+
+;; Succ edge  28 (fallthru)
+
+;; Start of basic block ( 27 3) -> 28
+;; Pred edge  27 (fallthru)
+;; Pred edge  3 [100.0%] 
+(code_label 185 184 186 28 3 "" [1 uses])
+
+(note 186 185 187 28 [bb 28] NOTE_INSN_BASIC_BLOCK)
+
+(insn 187 186 191 28 rapl.c:102 (set (reg:SI 78 [ <result> ])
+        (reg:SI 76 [ D.6411 ])) 47 {*movsi_1} (nil))
+
+(insn 191 187 197 28 rapl.c:103 (set (reg/i:SI 0 ax)
+        (reg:SI 78 [ <result> ])) 47 {*movsi_1} (nil))
+
+(insn 197 191 0 28 rapl.c:103 (use (reg/i:SI 0 ax)) -1 (nil))
+;; End of basic block 28 -> ( 1)
+
+;; Succ edge  EXIT [100.0%]  (fallthru)
+
+
+;; Function MPI_Init_fortran_wrapper (MPI_Init_fortran_wrapper)
+
+(note 1 0 4 NOTE_INSN_DELETED)
+
+;; Start of basic block ( 0) -> 2
+;; Pred edge  ENTRY (fallthru)
+(note 4 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(insn 2 4 3 2 rapl.c:106 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -24 [0xffffffffffffffe8])) [0 ierr+0 S8 A64])
+        (reg:DI 5 di [ ierr ])) 89 {*movdi_1_rex64} (nil))
+
+(note 3 2 6 2 NOTE_INSN_FUNCTION_BEG)
+
+(insn 6 3 7 2 rapl.c:107 (set (mem/c/i:SI (plus:DI (reg/f:DI 20 frame)
+                (const_int -8 [0xfffffffffffffff8])) [0 argc+0 S4 A64])
+        (const_int 0 [0x0])) 47 {*movsi_1} (nil))
+
+(insn 7 6 8 2 rapl.c:108 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -16 [0xfffffffffffffff0])) [0 argv+0 S8 A64])
+        (const_int 0 [0x0])) 89 {*movdi_1_rex64} (nil))
+
+(insn 8 7 9 2 rapl.c:109 (set (mem/c/i:SI (plus:DI (reg/f:DI 20 frame)
+                (const_int -4 [0xfffffffffffffffc])) [0 _wrap_py_return_val+0 S4 A32])
+        (const_int 0 [0x0])) 47 {*movsi_1} (nil))
+
+(insn 9 8 10 2 rapl.c:110 (parallel [
+            (set (reg:DI 59)
+                (plus:DI (reg/f:DI 20 frame)
+                    (const_int -16 [0xfffffffffffffff0])))
+            (clobber (reg:CC 17 flags))
+        ]) 281 {*adddi_1_rex64} (nil))
+
+(insn 10 9 11 2 rapl.c:110 (parallel [
+            (set (reg:DI 60)
+                (plus:DI (reg/f:DI 20 frame)
+                    (const_int -8 [0xfffffffffffffff8])))
+            (clobber (reg:CC 17 flags))
+        ]) 281 {*adddi_1_rex64} (nil))
+
+(insn 11 10 12 2 rapl.c:110 (set (reg:DI 4 si)
+        (reg:DI 59)) 89 {*movdi_1_rex64} (nil))
+
+(insn 12 11 13 2 rapl.c:110 (set (reg:DI 5 di)
+        (reg:DI 60)) 89 {*movdi_1_rex64} (nil))
+
+(call_insn 13 12 14 2 rapl.c:110 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("MPI_Init") [flags 0x1]  <function_decl 0x7fed12eb2c00 MPI_Init>) [0 S1 A8])
+            (const_int 0 [0x0]))) 936 {*call_value_0_rex64} (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (expr_list:REG_DEP_TRUE (use (reg:DI 4 si))
+            (nil))))
+
+(insn 14 13 15 2 rapl.c:110 (set (reg:SI 58 [ _wrap_py_return_val.14 ])
+        (reg:SI 0 ax)) 47 {*movsi_1} (nil))
+
+(insn 15 14 16 2 rapl.c:110 (set (mem/c/i:SI (plus:DI (reg/f:DI 20 frame)
+                (const_int -4 [0xfffffffffffffffc])) [0 _wrap_py_return_val+0 S4 A32])
+        (reg:SI 58 [ _wrap_py_return_val.14 ])) 47 {*movsi_1} (nil))
+
+(insn 16 15 17 2 rapl.c:111 (set (reg/f:DI 61)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -24 [0xffffffffffffffe8])) [0 ierr+0 S8 A64])) 89 {*movdi_1_rex64} (nil))
+
+(insn 17 16 18 2 rapl.c:111 (set (reg:SI 62)
+        (mem/c/i:SI (plus:DI (reg/f:DI 20 frame)
+                (const_int -4 [0xfffffffffffffffc])) [0 _wrap_py_return_val+0 S4 A32])) 47 {*movsi_1} (nil))
+
+(insn 18 17 0 2 rapl.c:111 (set (mem:SI (reg/f:DI 61) [0 S4 A32])
+        (reg:SI 62)) 47 {*movsi_1} (nil))
+;; End of basic block 2 -> ( 1)
+
+;; Succ edge  EXIT [100.0%]  (fallthru)
+
+
+;; Function MPI_INIT (MPI_INIT)
+
+(note 1 0 4 NOTE_INSN_DELETED)
+
+;; Start of basic block ( 0) -> 2
+;; Pred edge  ENTRY (fallthru)
+(note 4 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(insn 2 4 3 2 rapl.c:114 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -8 [0xfffffffffffffff8])) [0 ierr+0 S8 A64])
+        (reg:DI 5 di [ ierr ])) 89 {*movdi_1_rex64} (nil))
+
+(note 3 2 6 2 NOTE_INSN_FUNCTION_BEG)
+
+(insn 6 3 7 2 rapl.c:115 (set (mem/c/i:SI (symbol_ref:DI ("fortran_init") [flags 0x2]  <var_decl 0x7fed12c8ebe0 fortran_init>) [0 fortran_init+0 S4 A32])
+        (const_int 1 [0x1])) 47 {*movsi_1} (nil))
+
+(insn 7 6 8 2 rapl.c:116 (set (reg:DI 58)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -8 [0xfffffffffffffff8])) [0 ierr+0 S8 A64])) 89 {*movdi_1_rex64} (nil))
+
+(insn 8 7 9 2 rapl.c:116 (set (reg:DI 5 di)
+        (reg:DI 58)) 89 {*movdi_1_rex64} (nil))
+
+(call_insn 9 8 0 2 rapl.c:116 (call (mem:QI (symbol_ref:DI ("MPI_Init_fortran_wrapper") [flags 0x3]  <function_decl 0x7fed12c9a800 MPI_Init_fortran_wrapper>) [0 S1 A8])
+        (const_int 0 [0x0])) 646 {*call_0} (expr_list:REG_EH_REGION (const_int 0 [0x0])
+        (nil))
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (nil)))
+;; End of basic block 2 -> ( 1)
+
+;; Succ edge  EXIT [100.0%]  (fallthru)
+
+
+;; Function mpi_init (mpi_init)
+
+(note 1 0 4 NOTE_INSN_DELETED)
+
+;; Start of basic block ( 0) -> 2
+;; Pred edge  ENTRY (fallthru)
+(note 4 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(insn 2 4 3 2 rapl.c:119 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -8 [0xfffffffffffffff8])) [0 ierr+0 S8 A64])
+        (reg:DI 5 di [ ierr ])) 89 {*movdi_1_rex64} (nil))
+
+(note 3 2 6 2 NOTE_INSN_FUNCTION_BEG)
+
+(insn 6 3 7 2 rapl.c:120 (set (mem/c/i:SI (symbol_ref:DI ("fortran_init") [flags 0x2]  <var_decl 0x7fed12c8ebe0 fortran_init>) [0 fortran_init+0 S4 A32])
+        (const_int 2 [0x2])) 47 {*movsi_1} (nil))
+
+(insn 7 6 8 2 rapl.c:121 (set (reg:DI 58)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -8 [0xfffffffffffffff8])) [0 ierr+0 S8 A64])) 89 {*movdi_1_rex64} (nil))
+
+(insn 8 7 9 2 rapl.c:121 (set (reg:DI 5 di)
+        (reg:DI 58)) 89 {*movdi_1_rex64} (nil))
+
+(call_insn 9 8 0 2 rapl.c:121 (call (mem:QI (symbol_ref:DI ("MPI_Init_fortran_wrapper") [flags 0x3]  <function_decl 0x7fed12c9a800 MPI_Init_fortran_wrapper>) [0 S1 A8])
+        (const_int 0 [0x0])) 646 {*call_0} (expr_list:REG_EH_REGION (const_int 0 [0x0])
+        (nil))
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (nil)))
+;; End of basic block 2 -> ( 1)
+
+;; Succ edge  EXIT [100.0%]  (fallthru)
+
+
+;; Function mpi_init_ (mpi_init_)
+
+(note 1 0 4 NOTE_INSN_DELETED)
+
+;; Start of basic block ( 0) -> 2
+;; Pred edge  ENTRY (fallthru)
+(note 4 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(insn 2 4 3 2 rapl.c:124 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -8 [0xfffffffffffffff8])) [0 ierr+0 S8 A64])
+        (reg:DI 5 di [ ierr ])) 89 {*movdi_1_rex64} (nil))
+
+(note 3 2 6 2 NOTE_INSN_FUNCTION_BEG)
+
+(insn 6 3 7 2 rapl.c:125 (set (mem/c/i:SI (symbol_ref:DI ("fortran_init") [flags 0x2]  <var_decl 0x7fed12c8ebe0 fortran_init>) [0 fortran_init+0 S4 A32])
+        (const_int 3 [0x3])) 47 {*movsi_1} (nil))
+
+(insn 7 6 8 2 rapl.c:126 (set (reg:DI 58)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -8 [0xfffffffffffffff8])) [0 ierr+0 S8 A64])) 89 {*movdi_1_rex64} (nil))
+
+(insn 8 7 9 2 rapl.c:126 (set (reg:DI 5 di)
+        (reg:DI 58)) 89 {*movdi_1_rex64} (nil))
+
+(call_insn 9 8 0 2 rapl.c:126 (call (mem:QI (symbol_ref:DI ("MPI_Init_fortran_wrapper") [flags 0x3]  <function_decl 0x7fed12c9a800 MPI_Init_fortran_wrapper>) [0 S1 A8])
+        (const_int 0 [0x0])) 646 {*call_0} (expr_list:REG_EH_REGION (const_int 0 [0x0])
+        (nil))
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (nil)))
+;; End of basic block 2 -> ( 1)
+
+;; Succ edge  EXIT [100.0%]  (fallthru)
+
+
+;; Function mpi_init__ (mpi_init__)
+
+(note 1 0 4 NOTE_INSN_DELETED)
+
+;; Start of basic block ( 0) -> 2
+;; Pred edge  ENTRY (fallthru)
+(note 4 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(insn 2 4 3 2 rapl.c:129 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -8 [0xfffffffffffffff8])) [0 ierr+0 S8 A64])
+        (reg:DI 5 di [ ierr ])) 89 {*movdi_1_rex64} (nil))
+
+(note 3 2 6 2 NOTE_INSN_FUNCTION_BEG)
+
+(insn 6 3 7 2 rapl.c:130 (set (mem/c/i:SI (symbol_ref:DI ("fortran_init") [flags 0x2]  <var_decl 0x7fed12c8ebe0 fortran_init>) [0 fortran_init+0 S4 A32])
+        (const_int 4 [0x4])) 47 {*movsi_1} (nil))
+
+(insn 7 6 8 2 rapl.c:131 (set (reg:DI 58)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -8 [0xfffffffffffffff8])) [0 ierr+0 S8 A64])) 89 {*movdi_1_rex64} (nil))
+
+(insn 8 7 9 2 rapl.c:131 (set (reg:DI 5 di)
+        (reg:DI 58)) 89 {*movdi_1_rex64} (nil))
+
+(call_insn 9 8 0 2 rapl.c:131 (call (mem:QI (symbol_ref:DI ("MPI_Init_fortran_wrapper") [flags 0x3]  <function_decl 0x7fed12c9a800 MPI_Init_fortran_wrapper>) [0 S1 A8])
+        (const_int 0 [0x0])) 646 {*call_0} (expr_list:REG_EH_REGION (const_int 0 [0x0])
+        (nil))
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (nil)))
+;; End of basic block 2 -> ( 1)
+
+;; Succ edge  EXIT [100.0%]  (fallthru)
+
+
+;; Function MPI_Finalize (MPI_Finalize)
+
+(note 1 0 3 NOTE_INSN_DELETED)
+
+;; Start of basic block ( 0) -> 2
+;; Pred edge  ENTRY (fallthru)
+(note 3 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(note 2 3 5 2 NOTE_INSN_FUNCTION_BEG)
+
+(insn 5 2 6 2 rapl.c:142 (set (mem/c/i:SI (plus:DI (reg/f:DI 20 frame)
+                (const_int -12 [0xfffffffffffffff4])) [0 _wrap_py_return_val+0 S4 A32])
+        (const_int 0 [0x0])) 47 {*movsi_1} (nil))
+
+(insn 6 5 7 2 rapl.c:143 (set (reg:SI 65 [ in_wrapper.15 ])
+        (mem/c/i:SI (symbol_ref:DI ("in_wrapper") [flags 0x2]  <var_decl 0x7fed12e05460 in_wrapper>) [0 in_wrapper+0 S4 A32])) 47 {*movsi_1} (nil))
+
+(insn 7 6 8 2 rapl.c:143 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg:SI 65 [ in_wrapper.15 ])
+            (const_int 0 [0x0]))) 3 {*cmpsi_ccno_1} (nil))
+
+(jump_insn 8 7 9 2 rapl.c:143 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 15)
+            (pc))) 617 {*jcc_1} (nil))
+;; End of basic block 2 -> ( 3 4)
+
+;; Succ edge  3 (fallthru)
+;; Succ edge  4
+
+;; Start of basic block ( 2) -> 3
+;; Pred edge  2 (fallthru)
+(note 9 8 10 3 [bb 3] NOTE_INSN_BASIC_BLOCK)
+
+(call_insn 10 9 11 3 rapl.c:143 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("PMPI_Finalize") [flags 0x41]  <function_decl 0x7fed12f1be00 PMPI_Finalize>) [0 S1 A8])
+            (const_int 0 [0x0]))) 936 {*call_value_0_rex64} (nil)
+    (nil))
+
+(insn 11 10 12 3 rapl.c:143 (set (reg:SI 63 [ D.6473 ])
+        (reg:SI 0 ax)) 47 {*movsi_1} (nil))
+
+(insn 12 11 53 3 rapl.c:143 (set (reg:SI 64 [ D.6472 ])
+        (reg:SI 63 [ D.6473 ])) 47 {*movsi_1} (nil))
+
+(jump_insn 53 12 54 3 rapl.c:143 (set (pc)
+        (label_ref 37)) -1 (nil))
+;; End of basic block 3 -> ( 7)
+
+;; Succ edge  7 [100.0%] 
+
+(barrier 54 53 15)
+
+;; Start of basic block ( 2) -> 4
+;; Pred edge  2
+(code_label 15 54 16 4 28 "" [1 uses])
+
+(note 16 15 17 4 [bb 4] NOTE_INSN_BASIC_BLOCK)
+
+(insn 17 16 18 4 rapl.c:144 (set (mem/c/i:SI (symbol_ref:DI ("in_wrapper") [flags 0x2]  <var_decl 0x7fed12e05460 in_wrapper>) [0 in_wrapper+0 S4 A32])
+        (const_int 1 [0x1])) 47 {*movsi_1} (nil))
+
+(insn 18 17 19 4 rapl.c:147 (set (reg:SI 62 [ rank.16 ])
+        (mem/c/i:SI (symbol_ref:DI ("rank") [flags 0x2]  <var_decl 0x7fed12c8e6e0 rank>) [0 rank+0 S4 A32])) 47 {*movsi_1} (nil))
+
+(insn 19 18 20 4 rapl.c:147 (set (reg:SI 61 [ msr_rank_mod.17 ])
+        (mem/c/i:SI (symbol_ref:DI ("msr_rank_mod") [flags 0x2]  <var_decl 0x7fed12c8eb40 msr_rank_mod>) [0 msr_rank_mod+0 S4 A32])) 47 {*movsi_1} (nil))
+
+(insn 20 19 21 4 rapl.c:147 (parallel [
+            (set (reg:SI 68)
+                (div:SI (reg:SI 62 [ rank.16 ])
+                    (reg:SI 61 [ msr_rank_mod.17 ])))
+            (set (reg:SI 67)
+                (mod:SI (reg:SI 62 [ rank.16 ])
+                    (reg:SI 61 [ msr_rank_mod.17 ])))
+            (clobber (reg:CC 17 flags))
+        ]) 355 {*divmodsi4_nocltd} (nil))
+
+(insn 21 20 22 4 rapl.c:147 (set (reg:SI 60 [ D.6476 ])
+        (reg:SI 67)) 47 {*movsi_1} (nil))
+
+(insn 22 21 23 4 rapl.c:147 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg:SI 60 [ D.6476 ])
+            (const_int 0 [0x0]))) 3 {*cmpsi_ccno_1} (nil))
+
+(jump_insn 23 22 24 4 rapl.c:147 (set (pc)
+        (if_then_else (ne (reg:CCZ 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 30)
+            (pc))) 617 {*jcc_1} (nil))
+;; End of basic block 4 -> ( 5 6)
+
+;; Succ edge  5 (fallthru)
+;; Succ edge  6
+
+;; Start of basic block ( 4) -> 5
+;; Pred edge  4 (fallthru)
+(note 24 23 25 5 [bb 5] NOTE_INSN_BASIC_BLOCK)
+
+(insn 25 24 26 5 rapl.c:148 (set (reg/f:DI 69)
+        (mem/u/c:DI (const:DI (unspec:DI [
+                        (symbol_ref:DI ("s")  <var_decl 0x7fed12c8e960 s>)
+                    ] 2)) [0 S8 A8])) 89 {*movdi_1_rex64} (nil))
+
+(insn 26 25 27 5 rapl.c:148 (set (reg/f:DI 59 [ s.18 ])
+        (mem/f/c/i:DI (reg/f:DI 69) [0 s+0 S8 A64])) 89 {*movdi_1_rex64} (nil))
+
+(insn 27 26 28 5 rapl.c:148 (set (reg:SI 4 si)
+        (const_int 1 [0x1])) 47 {*movsi_1} (nil))
+
+(insn 28 27 29 5 rapl.c:148 (set (reg:DI 5 di)
+        (reg/f:DI 59 [ s.18 ])) 89 {*movdi_1_rex64} (nil))
+
+(call_insn 29 28 30 5 rapl.c:148 (call (mem:QI (symbol_ref:DI ("rapl_finalize") [flags 0x41]  <function_decl 0x7fed12c88400 rapl_finalize>) [0 S1 A8])
+        (const_int 0 [0x0])) 646 {*call_0} (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (expr_list:REG_DEP_TRUE (use (reg:SI 4 si))
+            (nil))))
+;; End of basic block 5 -> ( 6)
+
+;; Succ edge  6 (fallthru)
+
+;; Start of basic block ( 4 5) -> 6
+;; Pred edge  4
+;; Pred edge  5 (fallthru)
+(code_label 30 29 31 6 30 "" [1 uses])
+
+(note 31 30 32 6 [bb 6] NOTE_INSN_BASIC_BLOCK)
+
+(call_insn 32 31 33 6 rapl.c:150 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("PMPI_Finalize") [flags 0x41]  <function_decl 0x7fed12f1be00 PMPI_Finalize>) [0 S1 A8])
+            (const_int 0 [0x0]))) 936 {*call_value_0_rex64} (nil)
+    (nil))
+
+(insn 33 32 34 6 rapl.c:150 (set (reg:SI 58 [ _wrap_py_return_val.19 ])
+        (reg:SI 0 ax)) 47 {*movsi_1} (nil))
+
+(insn 34 33 35 6 rapl.c:150 (set (mem/c/i:SI (plus:DI (reg/f:DI 20 frame)
+                (const_int -12 [0xfffffffffffffff4])) [0 _wrap_py_return_val+0 S4 A32])
+        (reg:SI 58 [ _wrap_py_return_val.19 ])) 47 {*movsi_1} (nil))
+
+(insn 35 34 36 6 rapl.c:151 (set (mem/c/i:SI (symbol_ref:DI ("in_wrapper") [flags 0x2]  <var_decl 0x7fed12e05460 in_wrapper>) [0 in_wrapper+0 S4 A32])
+        (const_int 0 [0x0])) 47 {*movsi_1} (nil))
+
+(insn 36 35 37 6 rapl.c:152 (set (reg:SI 64 [ D.6472 ])
+        (mem/c/i:SI (plus:DI (reg/f:DI 20 frame)
+                (const_int -12 [0xfffffffffffffff4])) [0 _wrap_py_return_val+0 S4 A32])) 47 {*movsi_1} (nil))
+;; End of basic block 6 -> ( 7)
+
+;; Succ edge  7 (fallthru)
+
+;; Start of basic block ( 6 3) -> 7
+;; Pred edge  6 (fallthru)
+;; Pred edge  3 [100.0%] 
+(code_label 37 36 38 7 29 "" [1 uses])
+
+(note 38 37 39 7 [bb 7] NOTE_INSN_BASIC_BLOCK)
+
+(insn 39 38 43 7 rapl.c:152 (set (reg:SI 66 [ <result> ])
+        (reg:SI 64 [ D.6472 ])) 47 {*movsi_1} (nil))
+
+(insn 43 39 49 7 rapl.c:153 (set (reg/i:SI 0 ax)
+        (reg:SI 66 [ <result> ])) 47 {*movsi_1} (nil))
+
+(insn 49 43 0 7 rapl.c:153 (use (reg/i:SI 0 ax)) -1 (nil))
+;; End of basic block 7 -> ( 1)
+
+;; Succ edge  EXIT [100.0%]  (fallthru)
+
+
+;; Function MPI_Finalize_fortran_wrapper (MPI_Finalize_fortran_wrapper)
+
+(note 1 0 4 NOTE_INSN_DELETED)
+
+;; Start of basic block ( 0) -> 2
+;; Pred edge  ENTRY (fallthru)
+(note 4 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(insn 2 4 3 2 rapl.c:156 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -24 [0xffffffffffffffe8])) [0 ierr+0 S8 A64])
+        (reg:DI 5 di [ ierr ])) 89 {*movdi_1_rex64} (nil))
+
+(note 3 2 6 2 NOTE_INSN_FUNCTION_BEG)
+
+(insn 6 3 7 2 rapl.c:157 (set (mem/c/i:SI (plus:DI (reg/f:DI 20 frame)
+                (const_int -4 [0xfffffffffffffffc])) [0 _wrap_py_return_val+0 S4 A32])
+        (const_int 0 [0x0])) 47 {*movsi_1} (nil))
+
+(call_insn 7 6 8 2 rapl.c:158 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("MPI_Finalize") [flags 0x1]  <function_decl 0x7fed12eb2d00 MPI_Finalize>) [0 S1 A8])
+            (const_int 0 [0x0]))) 936 {*call_value_0_rex64} (nil)
+    (nil))
+
+(insn 8 7 9 2 rapl.c:158 (set (reg:SI 58 [ _wrap_py_return_val.20 ])
+        (reg:SI 0 ax)) 47 {*movsi_1} (nil))
+
+(insn 9 8 10 2 rapl.c:158 (set (mem/c/i:SI (plus:DI (reg/f:DI 20 frame)
+                (const_int -4 [0xfffffffffffffffc])) [0 _wrap_py_return_val+0 S4 A32])
+        (reg:SI 58 [ _wrap_py_return_val.20 ])) 47 {*movsi_1} (nil))
+
+(insn 10 9 11 2 rapl.c:159 (set (reg/f:DI 59)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -24 [0xffffffffffffffe8])) [0 ierr+0 S8 A64])) 89 {*movdi_1_rex64} (nil))
+
+(insn 11 10 12 2 rapl.c:159 (set (reg:SI 60)
+        (mem/c/i:SI (plus:DI (reg/f:DI 20 frame)
+                (const_int -4 [0xfffffffffffffffc])) [0 _wrap_py_return_val+0 S4 A32])) 47 {*movsi_1} (nil))
+
+(insn 12 11 0 2 rapl.c:159 (set (mem:SI (reg/f:DI 59) [0 S4 A32])
+        (reg:SI 60)) 47 {*movsi_1} (nil))
+;; End of basic block 2 -> ( 1)
+
+;; Succ edge  EXIT [100.0%]  (fallthru)
+
+
+;; Function MPI_FINALIZE (MPI_FINALIZE)
+
+(note 1 0 4 NOTE_INSN_DELETED)
+
+;; Start of basic block ( 0) -> 2
+;; Pred edge  ENTRY (fallthru)
+(note 4 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(insn 2 4 3 2 rapl.c:162 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -8 [0xfffffffffffffff8])) [0 ierr+0 S8 A64])
+        (reg:DI 5 di [ ierr ])) 89 {*movdi_1_rex64} (nil))
+
+(note 3 2 6 2 NOTE_INSN_FUNCTION_BEG)
+
+(insn 6 3 7 2 rapl.c:163 (set (reg:DI 58)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -8 [0xfffffffffffffff8])) [0 ierr+0 S8 A64])) 89 {*movdi_1_rex64} (nil))
+
+(insn 7 6 8 2 rapl.c:163 (set (reg:DI 5 di)
+        (reg:DI 58)) 89 {*movdi_1_rex64} (nil))
+
+(call_insn 8 7 0 2 rapl.c:163 (call (mem:QI (symbol_ref:DI ("MPI_Finalize_fortran_wrapper") [flags 0x3]  <function_decl 0x7fed12cb0500 MPI_Finalize_fortran_wrapper>) [0 S1 A8])
+        (const_int 0 [0x0])) 646 {*call_0} (expr_list:REG_EH_REGION (const_int 0 [0x0])
+        (nil))
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (nil)))
+;; End of basic block 2 -> ( 1)
+
+;; Succ edge  EXIT [100.0%]  (fallthru)
+
+
+;; Function mpi_finalize (mpi_finalize)
+
+(note 1 0 4 NOTE_INSN_DELETED)
+
+;; Start of basic block ( 0) -> 2
+;; Pred edge  ENTRY (fallthru)
+(note 4 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(insn 2 4 3 2 rapl.c:166 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -8 [0xfffffffffffffff8])) [0 ierr+0 S8 A64])
+        (reg:DI 5 di [ ierr ])) 89 {*movdi_1_rex64} (nil))
+
+(note 3 2 6 2 NOTE_INSN_FUNCTION_BEG)
+
+(insn 6 3 7 2 rapl.c:167 (set (reg:DI 58)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -8 [0xfffffffffffffff8])) [0 ierr+0 S8 A64])) 89 {*movdi_1_rex64} (nil))
+
+(insn 7 6 8 2 rapl.c:167 (set (reg:DI 5 di)
+        (reg:DI 58)) 89 {*movdi_1_rex64} (nil))
+
+(call_insn 8 7 0 2 rapl.c:167 (call (mem:QI (symbol_ref:DI ("MPI_Finalize_fortran_wrapper") [flags 0x3]  <function_decl 0x7fed12cb0500 MPI_Finalize_fortran_wrapper>) [0 S1 A8])
+        (const_int 0 [0x0])) 646 {*call_0} (expr_list:REG_EH_REGION (const_int 0 [0x0])
+        (nil))
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (nil)))
+;; End of basic block 2 -> ( 1)
+
+;; Succ edge  EXIT [100.0%]  (fallthru)
+
+
+;; Function mpi_finalize_ (mpi_finalize_)
+
+(note 1 0 4 NOTE_INSN_DELETED)
+
+;; Start of basic block ( 0) -> 2
+;; Pred edge  ENTRY (fallthru)
+(note 4 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(insn 2 4 3 2 rapl.c:170 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -8 [0xfffffffffffffff8])) [0 ierr+0 S8 A64])
+        (reg:DI 5 di [ ierr ])) 89 {*movdi_1_rex64} (nil))
+
+(note 3 2 6 2 NOTE_INSN_FUNCTION_BEG)
+
+(insn 6 3 7 2 rapl.c:171 (set (reg:DI 58)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -8 [0xfffffffffffffff8])) [0 ierr+0 S8 A64])) 89 {*movdi_1_rex64} (nil))
+
+(insn 7 6 8 2 rapl.c:171 (set (reg:DI 5 di)
+        (reg:DI 58)) 89 {*movdi_1_rex64} (nil))
+
+(call_insn 8 7 0 2 rapl.c:171 (call (mem:QI (symbol_ref:DI ("MPI_Finalize_fortran_wrapper") [flags 0x3]  <function_decl 0x7fed12cb0500 MPI_Finalize_fortran_wrapper>) [0 S1 A8])
+        (const_int 0 [0x0])) 646 {*call_0} (expr_list:REG_EH_REGION (const_int 0 [0x0])
+        (nil))
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (nil)))
+;; End of basic block 2 -> ( 1)
+
+;; Succ edge  EXIT [100.0%]  (fallthru)
+
+
+;; Function mpi_finalize__ (mpi_finalize__)
+
+(note 1 0 4 NOTE_INSN_DELETED)
+
+;; Start of basic block ( 0) -> 2
+;; Pred edge  ENTRY (fallthru)
+(note 4 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(insn 2 4 3 2 rapl.c:174 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -8 [0xfffffffffffffff8])) [0 ierr+0 S8 A64])
+        (reg:DI 5 di [ ierr ])) 89 {*movdi_1_rex64} (nil))
+
+(note 3 2 6 2 NOTE_INSN_FUNCTION_BEG)
+
+(insn 6 3 7 2 rapl.c:175 (set (reg:DI 58)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -8 [0xfffffffffffffff8])) [0 ierr+0 S8 A64])) 89 {*movdi_1_rex64} (nil))
+
+(insn 7 6 8 2 rapl.c:175 (set (reg:DI 5 di)
+        (reg:DI 58)) 89 {*movdi_1_rex64} (nil))
+
+(call_insn 8 7 0 2 rapl.c:175 (call (mem:QI (symbol_ref:DI ("MPI_Finalize_fortran_wrapper") [flags 0x3]  <function_decl 0x7fed12cb0500 MPI_Finalize_fortran_wrapper>) [0 S1 A8])
+        (const_int 0 [0x0])) 646 {*call_0} (expr_list:REG_EH_REGION (const_int 0 [0x0])
+        (nil))
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (nil)))
+;; End of basic block 2 -> ( 1)
+
+;; Succ edge  EXIT [100.0%]  (fallthru)
+
