@@ -1,7 +1,7 @@
 # Note:  Sandy Bridge Core is -DARCH_062A
 #        Sandy Bridge Xeon is -DARCH_062D
 #
-DEFINES +=-DARCH_062D
+DEFINES +=-DARCH_062A
 
 
 # Intel compilers can be a little too helpful.

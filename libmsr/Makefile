@@ -1,7 +1,7 @@
 target=msr
 library=libmsr.so
 
-DEFINES=-DARCH_SANDY_BRIDGE -DPKG_PERF_STATUS_AVAILABLE
+DEFINES=-DARCH_SANDY_BRIDGE -DPKG_PERF_STATUS_AVAILABLE 
 
 # Machine- and compiler-specific information goes here:
 -include localConfig.d/tlcc2Config

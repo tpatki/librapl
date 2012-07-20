@@ -609,8 +609,11 @@ rapl_tick(const char *filetag){
 		fprintf( s.f, "%ld.%06ld %lf ", s.finish[package].tv_sec, s.finish[package].tv_usec, s.elapsed[package] );
 		fprintf( s.f, "%lf %lf %lf ", 
 				s.avg_watts[package][PKG_DOMAIN],
-				s.avg_watts[package][PP0_DOMAIN],
-				s.avg_watts[package][DRAM_DOMAIN]);
+				s.avg_watts[package][PP0_DOMAIN]
+				#ifdef ARCH_062D	
+			,s.avg_watts[package][DRAM_DOMAIN]
+			#endif
+);
 		fprintf( s.f, "%lf ", s.effective_frequency[package] );
 	}
 	fprintf( s.f, "\n");
@@ -858,13 +861,13 @@ dump_rapl(){
 		fprintf(stdout, "%20lu ", val);
 	}
 	fprintf(stdout, "MSR_PP0_ENERGY_STATUS\n");
-
+#ifdef ARCH_062D
 	for( package=0; package<NUM_PACKAGES; package++){
 		read_msr( package, MSR_DRAM_ENERGY_STATUS, &val );
 		fprintf(stdout, "%20lu ", val);
 	}
 	fprintf(stdout, "MSR_DRAM_ENERGY_STATUS\n");
-
+#endif
 	for( package=0; package<NUM_PACKAGES; package++){
 		read_msr( package, MSR_PKG_POWER_INFO, &val );
 		fprintf(stdout, "0x%018lx ", val);
@@ -888,12 +891,13 @@ dump_rapl(){
 		fprintf(stdout, "0x%018lx ", val);
 	}
 	fprintf(stdout, "MSR_PP0_POWER_LIMIT\n");
-
+#ifdef ARCH_062D
 	for( package=0; package<NUM_PACKAGES; package++){
 		read_msr( package, MSR_DRAM_POWER_LIMIT, &val );
 		fprintf(stdout, "0x%018lx ", val);
 	}
 	fprintf(stdout, "MSR_DRAM_POWER_LIMIT\n");
+#endif
 }
 
 void
@@ -903,7 +907,9 @@ clear_all_limits(){
 	for( package=0; package<NUM_PACKAGES; package++ ){
 		write_msr( package, MSR_PKG_POWER_LIMIT, 0 );
 		write_msr( package, MSR_PP0_POWER_LIMIT, 0 );
-		write_msr( package, MSR_DRAM_POWER_LIMIT, 0 );
+	#ifdef ARCH_062D	
+	write_msr( package, MSR_DRAM_POWER_LIMIT, 0 );
+	#endif
 	}
 }
 
