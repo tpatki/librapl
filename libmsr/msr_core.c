@@ -113,6 +113,7 @@ void
 write_msr_single_core(int cpu, int core, off_t msr, uint64_t val){
 	int rc, core_fd_idx;
 	char error_msg[1025];
+	uint64_t actual;
 	core_fd_idx = cpu*NUM_CORES_PER_PACKAGE+core;
 	rc = pwrite( core_fd[cpu][core], &val, (size_t)sizeof(uint64_t), msr );
 	if( rc != sizeof(uint64_t) ){
@@ -120,6 +121,22 @@ write_msr_single_core(int cpu, int core, off_t msr, uint64_t val){
 				__FILE__, __LINE__, rc, cpu, core, core_fd[cpu][core], cpu, core, core_fd_idx, msr, msr, errno );
 		perror(error_msg);
 	}
+
+	//Verify the value that was written
+	 rc = pread(core_fd[cpu][core], &actual, (size_t)sizeof(uint64_t), msr);
+	if( rc != sizeof(uint64_t) ){
+                snprintf( error_msg, 1024, "%s::%d  Verifying the value that was written: pread returned %d.  core_fd[%d][%d]=%d, cpu=%d, core=%d cpu+core=%d msr=%ld (0x%lx).  errno=%d\n",
+                                __FILE__, __LINE__, rc, cpu, core, core_fd[cpu][core], cpu, core, core_fd_idx, msr, msr, errno );
+                perror(error_msg);
+        }
+	if(actual == val){
+		printf("writemsr: Verification successful. core_fd[%d][%d]=%d, cpu=%d, core=%d cpu+core=%d msr=%ld (0x%lx).\n", cpu, core, core_fd[cpu][core], cpu, core, core_fd_idx, msr,msr);
+	}
+	else {
+             snprintf(error_msg, 1024, "%s::%d  writemsr: verification failed. core_fd[%d][%d]=%d, cpu=%d, core=%d cpu+core=%d msr=%ld (0x%lx).  errno=%d\n",
+                                __FILE__, __LINE__, cpu, core, core_fd[cpu][core], cpu, core, core_fd_idx, msr, msr, errno );
+	}
+
 }
 
 void

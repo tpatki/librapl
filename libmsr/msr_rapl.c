@@ -671,8 +671,8 @@ print_rapl_state(struct rapl_state_s *s){
 			UNIT_SCALE(1, s->power_unit[package].energy), 
 			UNIT_SCALE(1, s->power_unit[package].time));
 		fprintf(s->f, "%lu %lu %lu %lu %lu %lf %lf %lf ", 
-			s->power_limit[package][PKG_DOMAIN].clamp_2, 
 			s->power_limit[package][PKG_DOMAIN].enable_2, 
+			s->power_limit[package][PKG_DOMAIN].clamp_2, 
 			s->power_limit[package][PKG_DOMAIN].time_window_2, 
 			s->power_limit[package][PKG_DOMAIN].power_limit_2, 
 			s->power_limit[package][PKG_DOMAIN].time_multiplier_2, 
@@ -681,8 +681,8 @@ print_rapl_state(struct rapl_state_s *s){
 			s->power_limit[package][PKG_DOMAIN].power_limit_2_watts);
 
 		fprintf(s->f, "%lu %lu %lu %lu %lu %lf %lf %lf ", 
-			s->power_limit[package][PKG_DOMAIN].clamp_1, 
 			s->power_limit[package][PKG_DOMAIN].enable_1, 
+			s->power_limit[package][PKG_DOMAIN].clamp_1, 
 			s->power_limit[package][PKG_DOMAIN].time_window_1, 
 			s->power_limit[package][PKG_DOMAIN].power_limit_1, 
 			s->power_limit[package][PKG_DOMAIN].time_multiplier_1, 
@@ -691,8 +691,8 @@ print_rapl_state(struct rapl_state_s *s){
 			s->power_limit[package][PKG_DOMAIN].power_limit_1_watts);
 					
 		fprintf(s->f, "%lu %lu %lu %lu %lu %lf %lf %lf ", 
-			s->power_limit[package][PP0_DOMAIN].clamp_1, 
 			s->power_limit[package][PP0_DOMAIN].enable_1, 
+			s->power_limit[package][PP0_DOMAIN].clamp_1, 
 			s->power_limit[package][PP0_DOMAIN].time_window_1, 
 			s->power_limit[package][PP0_DOMAIN].power_limit_1, 
 			s->power_limit[package][PP0_DOMAIN].time_multiplier_1, 
@@ -702,8 +702,8 @@ print_rapl_state(struct rapl_state_s *s){
 
 #ifdef ARCH_062D
 		fprintf(s->f, "%lu %lu %lu %lu %lu %lf %lf %lf ", 
-			s->power_limit[package][DRAM_DOMAIN].clamp_1, 
 			s->power_limit[package][DRAM_DOMAIN].enable_1, 
+			s->power_limit[package][DRAM_DOMAIN].clamp_1, 
 			s->power_limit[package][DRAM_DOMAIN].time_window_1, 
 			s->power_limit[package][DRAM_DOMAIN].power_limit_1, 
 			s->power_limit[package][DRAM_DOMAIN].time_multiplier_1, 
