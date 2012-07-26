@@ -141,6 +141,9 @@ get_env_variables(struct rapl_state_s *s){
 			for(package=0;package<NUM_PACKAGES; package++){
 				disable_turbo(package);
 			}
+			
+			//Write to the POWER registers
+			set_power_bounds();	
 	
 			//Write to the POWER registers
 			set_power_bounds();	
@@ -153,7 +156,6 @@ get_env_variables(struct rapl_state_s *s){
                                 get_all_status(package, s);
                                 gettimeofday( &(s->start[package]), NULL );
                          }
-
 		}
 	}
 }
