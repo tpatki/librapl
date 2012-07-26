@@ -141,6 +141,9 @@ get_env_variables(struct rapl_state_s *s){
 			for(package=0;package<NUM_PACKAGES; package++){
 				disable_turbo(package);
 			}
+			
+			//Write to the POWER registers
+			set_power_bounds();	
 	
 //			You want to do this in here and not in rapl_init because it is safer to do it in here.
   			print_rapl_state_header(s);
@@ -151,8 +154,7 @@ get_env_variables(struct rapl_state_s *s){
                                 gettimeofday( &(s->start[package]), NULL );
                          }
 
-			//Write to the POWER registers
-			set_power_bounds();	
+	
 		}
 	}
 }
