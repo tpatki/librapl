@@ -144,9 +144,6 @@ get_env_variables(struct rapl_state_s *s){
 			
 			//Write to the POWER registers
 			set_power_bounds();	
-	
-			//Write to the POWER registers
-			set_power_bounds();	
 
 //			You want to do this in here and not in rapl_init because it is safer to do it in here.
   			print_rapl_state_header(s);
