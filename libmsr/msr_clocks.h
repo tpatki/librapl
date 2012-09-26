@@ -1,13 +1,17 @@
 #ifndef MSR_CLOCKS_H
 #define MSR_CLOCKS_H
 
-void read_aperf(int package, uint64_t *aperf); 
-void read_mperf(int package, uint64_t *mperf); 
-void read_tsc  (int package, uint64_t *tsc); 
-//double get_effective_frequency();
-//TP
+#include "msr_rapl.h"
 
-double get_effective_frequency(int package);
+double measure_tsc();
+
+/*
+void
+get_effective_frequency(struct rapl_state_s *s, int core, double *ratio, double *c0);
+*/
+
+void
+get_effective_frequencies(int package, struct rapl_state_s *s);
 
 void dump_clocks();
 

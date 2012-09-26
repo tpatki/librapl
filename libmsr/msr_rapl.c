@@ -1,6 +1,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdint.h>
+#include <stdlib.h>
 #include "msr_common.h"
 #include "msr_core.h"
 #include "msr_rapl.h"
@@ -8,6 +9,7 @@
 #include "msr_clocks.h"
 #include "msr_turbo.h"
 #include "blr_util.h"
+#include "sample.h"
 
 static struct rapl_state_s no_caller_rapl_state;
 
@@ -412,10 +414,12 @@ set_policy( int package, int domain, uint64_t policy ){
 }
 
 
+//void 
 struct rapl_state_s *
-rapl_init( const char *filetag ){
+rapl_init(const char *filetag ){
 	static char filename[4097];
-	struct rapl_state_s *s = &no_caller_rapl_state;
+	struct rapl_state_s *s; 
+	s = &no_caller_rapl_state;
 
 	//Ensure that the default mode values are set correctly
 	//The get_env_vars will read the environment vars and
@@ -431,6 +435,9 @@ rapl_init( const char *filetag ){
 	s->mode.read_only_flag = 0;
 	s->mode.read_write_flag = 0;
 
+	//Turbo disabled by default.
+	s->mode.turbo_enable_flag = 0;
+
 	if( filetag == NULL ){
 		filetag = "anonymous";
 	}
@@ -441,7 +448,8 @@ rapl_init( const char *filetag ){
 
 	if(s->f == NULL){
 		fprintf(stderr, "\nError opening file: %s", filename);
-		return s; 
+	//	return s; 
+		s=NULL;
 	}
 
 
@@ -467,6 +475,14 @@ rapl_finalize( struct rapl_state_s *s, int reset_limits){
 		s = &no_caller_rapl_state;
 	}
 
+        if(s->initializedTick){
+          uint64_t tsc = rdtsc();
+
+          // require 10ms between ticks
+          if(tsc_delta(&lastNonzeroTick, &tsc, &tsc_rate) > 0.01)
+                 rapl_tick(s, 0);
+          }
+          
 
 	for(package=0; package<NUM_PACKAGES; package++){
 		get_all_status(package, s);
@@ -474,6 +490,7 @@ rapl_finalize( struct rapl_state_s *s, int reset_limits){
 		if(reset_limits){
 			// Rest all limits.
 			// This is currently the default limit on rzmerl.
+			printf("\nRESETTING LIMITS\n");
 			write_msr( package, MSR_PKG_POWER_LIMIT, APPRO_DEFAULT_PKG_POWER_LIMIT);
 			/*
 			write_msr( package, MSR_PP0_POWER_LIMIT, 0 );
@@ -492,7 +509,7 @@ rapl_finalize( struct rapl_state_s *s, int reset_limits){
 	//Otherwise, the file should be empty.
 
 	if(s->mode.dry_run_flag == 1 && s->mode.read_only_flag ==0 && s->mode.read_write_flag == 0){
-		fprintf(stdout, "\nIn DRY_RUN mode.");
+		fprintf(stdout, "\nIn DRY_RUN mode.\n");
 		finalize_msr();
 	}
 	else {
@@ -543,6 +560,7 @@ get_all_status(int package, struct rapl_state_s *s){
 
 	gettimeofday( &(s->finish[package]), NULL );
 	s->elapsed[package] = ts_delta( &(s->start[package]), &(s->finish[package]) );
+	s->interval[package] = ts_delta( &(s->start[package]), &(s->finish[package]) );
 
 	get_energy_status( package, PKG_DOMAIN,  
 		&(s->energy_status[package][PKG_DOMAIN]), 
@@ -576,11 +594,11 @@ get_all_status(int package, struct rapl_state_s *s){
 	s->start[package].tv_usec = s->finish[package].tv_usec;
 }
 
-void
-rapl_tick(const char *filetag){
+/*void
+rapl_tick(struct rapl_state_s *s, const char *filetag){
 	static char filename[4097];
 	int package;
-	static struct rapl_state_s s;
+//	static struct rapl_state_s s;
 	static int initialized=0;
 	if( !initialized ){
 		initialized=1;
@@ -588,36 +606,92 @@ rapl_tick(const char *filetag){
 			filetag = "anonymous";
 		}
 		snprintf( filename, 4096, "%s.tick.out", filetag );
-		s.f = fopen( filename, "w" );
+		s->f = fopen( filename, "w" );
 		for( package=0; package<NUM_PACKAGES; package++ ){
-			gettimeofday( &(s.start[package]), NULL );
-			gettimeofday( &(s.finish[package]), NULL );
-			get_all_info(  package, &s);
-			get_all_limit( package, &s);
-			get_all_status(package, &s);
-			s.effective_frequency[package] = get_effective_frequency(package);
-			fprintf( s.f, "ts_%d elapsed_%d pkg_%d pp0_%d dram_%d ef_%d",
+			gettimeofday( &(s->start[package]), NULL );
+			gettimeofday( &(s->finish[package]), NULL );
+			get_all_info(  package, s);
+			get_all_limit( package, s);
+			get_all_status(package, s);
+			s->effective_frequency[package] = get_effective_frequency(package);
+			fprintf( s->f, "ts_%d elapsed_%d pkg_%d pp0_%d dram_%d ef_%d",
 			      package, package, package, package, package, package );
 		}
-		fprintf( s.f, "\n" );
+		fprintf( s->f, "\n" );
 		return;	
 	}
 
 	for( package=0; package<NUM_PACKAGES; package++ ){
-		get_all_status(package, &s);
-		s.effective_frequency[package] = get_effective_frequency(package);
-		fprintf( s.f, "%ld.%06ld %lf ", s.finish[package].tv_sec, s.finish[package].tv_usec, s.elapsed[package] );
-		fprintf( s.f, "%lf %lf %lf ", 
-				s.avg_watts[package][PKG_DOMAIN],
-				s.avg_watts[package][PP0_DOMAIN]
+		get_all_status(package, s);
+		s->effective_frequency[package] = get_effective_frequency(package);
+		fprintf( s->f, "%ld.%06ld %lf ", s->finish[package].tv_sec, s->finish[package].tv_usec, s->elapsed[package] );
+		fprintf( s->f, "%lf %lf %lf ", 
+				s->avg_watts[package][PKG_DOMAIN],
+				s->avg_watts[package][PP0_DOMAIN]
 				#ifdef ARCH_062D	
-			,s.avg_watts[package][DRAM_DOMAIN]
+			,s->avg_watts[package][DRAM_DOMAIN]
 			#endif
 );
-		fprintf( s.f, "%lf ", s.effective_frequency[package] );
+		fprintf( s->f, "%lf ", s->effective_frequency[package] );
 	}
-	fprintf( s.f, "\n");
+	fprintf( s->f, "\n");
 }
+*/
+
+//Peter's version.
+void
+rapl_tick(struct rapl_state_s *s, const char * const filename){
+
+  if(s==NULL){
+		//printf("\n Error: State is null here.");
+		//exit(1);
+		s = &no_caller_rapl_state;
+	}
+	
+//	printf("\n In rapl_tick");
+
+  int package, core;
+  if( !s->initializedTick ){
+    s->initializedTick=1;
+    s->tickFile = fopen( filename, "w" );
+    for( package=0; package<NUM_PACKAGES; package++ ){
+      gettimeofday( &(s->start[package]), NULL );
+      gettimeofday( &(s->finish[package]), NULL );
+      get_all_info(  package, s);
+      get_all_limit( package, s);
+      get_all_status(package, s);
+      get_effective_frequencies(package, s);
+      fprintf( s->tickFile,
+               "ts_%d\telapsed_%d\tpkg_%d\tpp0_%d\tdram_%d\t",
+               package, package, package, package, package);
+      for(core = 0; core < NUM_CORES_PER_PACKAGE; core++)
+        fprintf(s->tickFile, "freq_ratio_%d_%d\tc0_ratio_%d_%d\t",
+                package, core, package, core);
+    }
+    fprintf( s->tickFile, "\n" );
+    return;
+  }
+
+  for( package = 0; package < NUM_PACKAGES; package++ ){
+    get_all_status(package, s);
+    get_effective_frequencies(package, s);
+    fprintf(s->tickFile, "%ld.%06ld\t%lf\t%lf\t%lf\t%lf\t",
+             s->finish[package].tv_sec,
+             s->finish[package].tv_usec,
+             s->interval[package],
+             s->avg_watts[package][PKG_DOMAIN],
+             s->avg_watts[package][PP0_DOMAIN],
+             s->avg_watts[package][DRAM_DOMAIN]);
+    //s->effective_freq_ratio[package] );
+    for(core = 0; core < NUM_CORES_PER_PACKAGE; core++)
+      fprintf(s->tickFile, "%lf\t%lf\t",
+              s->effective_freq_ratio[package * NUM_CORES_PER_PACKAGE + core],
+              s->c0_ratio[package * NUM_CORES_PER_PACKAGE + core]);
+  }
+  fprintf( s->tickFile, "\n");
+}
+
+
 
 void 
 print_rapl_state(struct rapl_state_s *s){

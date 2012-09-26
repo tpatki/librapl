@@ -58,6 +58,18 @@ get_env_variables(struct rapl_state_s *s){
 
 	int retVal = -1; 
 
+	env = getenv("TURBO_ENABLE");
+	if(env == NULL){
+		//Turbo enable flag has not been set.
+		//Ensure that it is still zero.
+		s->mode.turbo_enable_flag = 0;
+	}
+	if(env){
+		s->mode.turbo_enable_flag = strtoll(env,NULL,0);
+	}
+
+
+
 	env = getenv("READ_ONLY");
 	if(env == NULL){
 		//Read only flag has not been set.
@@ -104,12 +116,28 @@ get_env_variables(struct rapl_state_s *s){
  			* followed by the get_rapl_data(), followed by finalize_msr(). */ 	
 
 			fprintf(stdout, "\nIn READ-ONLY mode.\n");
+		
+			/*TURBO */
+			//Now that the permissions are correct, first enable/disable turbo based on the env var TURBO_ENABLE.
+			//Default is TURBO DISABLED, so TURBO_ENABLE=0.
+			// If TURBO_ENABLE is a number other than 1 or 0, default to 0. 
 
-			//Now that the permissions are correct, first disable turbo.
 			
-			for(package=0;package<NUM_PACKAGES; package++){
-				disable_turbo(package);
+			if(s->mode.turbo_enable_flag == 1) {
+				printf("\nENABLING TURBO\n");
+				for(package=0;package<NUM_PACKAGES; package++){
+					enable_turbo(package);
+				}
 			}
+			else {
+				printf("\nDISABLING TURBO\n");
+				for(package=0;package<NUM_PACKAGES; package++){
+					disable_turbo(package);
+				}
+
+			}
+
+			
 	
 //			You want to do this in here and not in rapl_init because it is safer to do it in here.
 //			Also, in the dry run, none of this info should be printed.
@@ -138,16 +166,35 @@ get_env_variables(struct rapl_state_s *s){
 
 			//Now that the permissions are correct, first disable turbo.
 			
-			for(package=0;package<NUM_PACKAGES; package++){
+		/*	for(package=0;package<NUM_PACKAGES; package++){
 				disable_turbo(package);
 			}
-			
+		*/	
+
+
+			/*TURBO */
+			//Now that the permissions are correct, first enable/disable turbo based on the env var TURBO_ENABLE.
+			//Default is TURBO DISABLED, so TURBO_ENABLE=0.
+			// If TURBO_ENABLE is a number other than 1 or 0, default to 0. 
+
+			if(s->mode.turbo_enable_flag == 1) {
+				for(package=0;package<NUM_PACKAGES; package++){
+					enable_turbo(package);
+				}
+			}
+			else {
+				for(package=0;package<NUM_PACKAGES; package++){
+					disable_turbo(package);
+				}
+			}
+
 			//Write to the POWER registers
 			set_power_bounds();	
 
 //			You want to do this in here and not in rapl_init because it is safer to do it in here.
   			print_rapl_state_header(s);
-                         for(package=0; package<NUM_PACKAGES; package++){
+                       
+		  for(package=0; package<NUM_PACKAGES; package++){
 			        get_all_info(  package, s);
                                 get_all_limit( package, s);
                                 get_all_status(package, s);

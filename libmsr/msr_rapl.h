@@ -138,6 +138,7 @@ struct mode_s{
   int dry_run_flag;
   int read_only_flag;
   int read_write_flag;
+  int turbo_enable_flag;
 };
 
 struct rapl_state_s{
@@ -145,6 +146,7 @@ struct rapl_state_s{
 	struct timeval start[NUM_PACKAGES];
 	struct timeval finish[NUM_PACKAGES];
 	double elapsed[NUM_PACKAGES];
+	double interval[NUM_PACKAGES];
 	double avg_watts[NUM_PACKAGES][NUM_DOMAINS];
 	double energy_status[NUM_PACKAGES][NUM_DOMAINS];
 	struct power_limit_s power_limit[NUM_PACKAGES][NUM_DOMAINS];
@@ -152,6 +154,21 @@ struct rapl_state_s{
 	struct power_info_s  power_info[NUM_PACKAGES][NUM_DOMAINS];
 	uint64_t last_raw_joules[NUM_PACKAGES][NUM_DOMAINS];
 	double effective_frequency[NUM_PACKAGES];
+
+	//sampling
+	 int initializedTick;
+         FILE *tickFile;
+  double total_joules[NUM_PACKAGES][NUM_DOMAINS];
+
+        uint64_t previous_mperf[NUM_CORES_PER_PACKAGE * NUM_PACKAGES],
+          previous_aperf[NUM_CORES_PER_PACKAGE * NUM_PACKAGES],
+          previous_tsc[NUM_CORES_PER_PACKAGE * NUM_PACKAGES];
+
+        double effective_freq_ratio[NUM_CORES_PER_PACKAGE * NUM_PACKAGES];
+        double c0_ratio[NUM_CORES_PER_PACKAGE * NUM_PACKAGES];
+
+	
+
 	/*
 	double perf_status_start[NUM_PACKAGES][NUM_DOMAINS];
 	double perf_status_finish[NUM_PACKAGES][NUM_DOMAINS];
