@@ -19,8 +19,6 @@ The NUM_PACKAGES and NUM_CORES_PER_PACKAGE need to be set in msr_core.h correctl
 
 Type "make" in the libmsr folder, and then "make rapl-gnu" in the libmsr/mpi/ folder.
 
-(Note that the functionality for compiling with Intel is not available at the moment for libmsr, 
-so don't try using it even though there is an option for rapl-icc in the mpi/ folder.)
 
 This should create libmsr.so and librapl.so in the libmsr/lib folder.
 
